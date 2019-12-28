@@ -1,44 +1,50 @@
 {
-	"name": "preact-typescript-webpack4-boilerplate",
-	"version": "1.0.0",
-	"description": "Preact training app",
-	"scripts": {
-		"build": "yarn run clean && webpack --config ./webpack.config.js --mode production --progress",
-		"dev": "yarn run clean && webpack --config ./webpack.config.js --mode development",
-		"start": "webpack-dev-server --config ./webpack.config.js --mode development",
-		"clean": "rimraf ./dist"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/lexey111/preact-typescript-webpack4-boilerplate.git"
-	},
-	"keywords": [
-		"preact",
-		"typescript",
-		"less",
-		"boilerplate",
-		"webpack 4"
-	],
-	"alias": {
-		"preact": "./node_modules/preact/dist/preact.min.js"
-	},
-	"author": "lexey111 <lexey111@gmail.com>",
-	"license": "ISC",
-	"dependencies": {
-		"preact": "10.0.0"
-	},
-	"devDependencies": {
-		"copy-webpack-plugin": "5.0.4",
-		"file-loader": "4.2.0",
-		"fork-ts-checker-webpack-plugin": "1.5.1",
-		"less": "3.10.3",
-		"less-loader": "5.0.0",
-		"less-plugin-clean-css": "1.5.1",
-		"rimraf": "3.0.0",
-		"ts-loader": "6.2.0",
-		"typescript": "3.6.4",
-		"webpack": "4.41.2",
-		"webpack-cli": "3.3.9",
-		"webpack-dev-server": "3.7.1" 
-	}
+  "name": "preact-typescript-webpack4-boilerplate",
+  "version": "1.0.0",
+  "description": "Preact training app",
+  "scripts": {
+    "build": "yarn run clean && webpack --config ./webpack.config.js --mode production --progress",
+    "dev": "yarn run clean && webpack --config ./webpack.config.js --mode development",
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "clean": "rimraf ./dist",
+    "webext": "web-ext run -p default-release --start-url https://dreamy.jejunu.ac.kr"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lexey111/preact-typescript-webpack4-boilerplate.git"
+  },
+  "keywords": [
+    "preact",
+    "typescript",
+    "less",
+    "boilerplate",
+    "webpack 4"
+  ],
+  "alias": {
+    "preact": "./node_modules/preact/dist/preact.min.js"
+  },
+  "author": "lexey111 <lexey111@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "preact": "10.0.0"
+  },
+  "devDependencies": {
+    "@types/copy-webpack-plugin": "^5.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "file-loader": "4.2.0",
+    "fork-ts-checker-webpack-plugin": "1.5.1",
+    "less": "3.10.3",
+    "less-loader": "5.0.0",
+    "less-plugin-clean-css": "1.5.1",
+    "rimraf": "3.0.0",
+    "ts-loader": "6.2.0",
+    "typescript": "3.6.4",
+    "web-ext": "^4.0.0",
+    "webpack": "4.41.2",
+    "webpack-cli": "3.3.9",
+    "webpack-dev-server": "3.7.1"
+  },
+  "webExt": {
+    "sourceDir": "dist/"
+  }
 }

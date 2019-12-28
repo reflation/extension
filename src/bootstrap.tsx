@@ -1,6 +1,13 @@
-import { h, render } from 'preact';
-import { App } from './app/app';
+import { h, render } from 'preact'
+import { App } from './app/app'
 
-import './styles/app.less';
+import './styles/app.less'
 
-render(<App title='Preact boilerplate' />, document.getElementById('app'));
+import { reconstruct } from './utils/reconstruct'
+
+const main = async () => {
+  reconstruct('전체 성적 조회')
+  render(<App title="Preact boilerplate" />, document.body)
+}
+
+main().catch(e => console.error(e ? e.stack || e : e))
