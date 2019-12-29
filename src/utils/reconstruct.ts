@@ -1,7 +1,4 @@
 export const reconstruct = (title: string) => {
-  {
-    window.open = () => null
-  }
   const root = document.createElement('html')
   document.replaceChild(root, document.documentElement)
   root.innerHTML = [

@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "Preact training app",
   "scripts": {
-    "build": "yarn run clean && webpack --config ./webpack.config.js --mode production --progress",
-    "dev": "yarn run clean && webpack --config ./webpack.config.js --mode development",
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "build": "yarn run clean && yarn env:extension webpack --mode production --progress",
+    "dev": "yarn run clean && yarn env:extension webpack --mode development --watch",
+    "start": "webpack-dev-server --mode development",
     "clean": "rimraf ./dist",
+    "env:extension": "cross-env isExt=yes",
     "webext": "web-ext run -p default-release --start-url https://dreamy.jejunu.ac.kr"
   },
   "repository": {
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@types/copy-webpack-plugin": "^5.0.0",
     "copy-webpack-plugin": "^5.1.1",
+    "cross-env": "^6.0.3",
     "file-loader": "4.2.0",
     "fork-ts-checker-webpack-plugin": "1.5.1",
     "less": "3.10.3",
