@@ -139,5 +139,6 @@ textarea,
 input,
 button {
   appearance: none;
+  border: none;
   outline: none;
 }

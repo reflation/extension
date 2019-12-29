@@ -26,7 +26,8 @@
   "author": "lexey111 <lexey111@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "preact": "10.1.1"
+    "preact": "10.1.1",
+    "preact-feather": "^4.0.0"
   },
   "devDependencies": {
     "@types/copy-webpack-plugin": "^5.0.0",

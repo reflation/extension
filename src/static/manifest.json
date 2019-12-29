@@ -8,7 +8,7 @@
   "content_scripts": [
     {
       "run_at": "document_start",
-      "matches": ["https://dreamy.jejunu.ac.kr/susj/sj/sta_sj_3220q.jejunu"],
+      "matches": ["https://dreamy.jejunu.ac.kr/frame/index.do*"],
       "js": ["scripts/main.js", "scripts/vendor.js"],
       "css": ["styles/app/app.css"]
     }
