@@ -1,6 +1,6 @@
 import { h } from 'preact'
 
-import { primary, white } from '../../styles/colors'
+import { primary } from '../../styles/colors'
 import { ExtraBold } from '../../styles/components/Text'
 
 const Template = {
@@ -16,7 +16,7 @@ const Template = {
 
 const Text = {
   ...ExtraBold,
-  color: white,
+  color: 'white',
   fontSize: '24px',
   textAlign: 'center',
 }
