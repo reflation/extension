@@ -1,7 +1,7 @@
 {
-  "name": "preact-typescript-webpack4-boilerplate",
+  "name": "reflaction",
   "version": "1.0.0",
-  "description": "Preact training app",
+  "description": "A enhance UX browser extension for https://dreamy.jejunu.ac.kr",
   "scripts": {
     "build": "yarn run clean && yarn env:extension webpack --mode production --progress",
     "dev": "yarn run clean && yarn env:extension webpack --mode development --watch",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lexey111/preact-typescript-webpack4-boilerplate.git"
+    "url": "git+https://github.com/reflation/extension.git"
   },
   "keywords": [
     "preact",
@@ -24,7 +24,7 @@
   "alias": {
     "preact": "./node_modules/preact/dist/preact.min.js"
   },
-  "author": "lexey111 <lexey111@gmail.com>",
+  "author": "reflaction",
   "license": "ISC",
   "dependencies": {
     "preact": "10.1.1",
