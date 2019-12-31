@@ -1,36 +1,14 @@
-Preact + Typesript + Webpack 4 + LESS / boilerplate
-===
+# RE:flation
 
-Preact v10.0 with hooks demo
+A enhance UX browser extension for https://dreamy.jejunu.ac.kr
 
-Things under the hood:
----
-* [Preact](https://preactjs.com/)
-* [Typescript](https://www.typescriptlang.org/)
-* [Webpack 4](https://webpack.js.org/)
-* [LESS](http://lesscss.org/)
+## Features
 
-Initial idea [Dominic St-Pierre](https://dominicstpierre.com/how-to-start-with-typescript-and-preact-a9ea3e0ba4dc)
+### Login Page
 
-I've tried to keep things as simple as possible.
+- view password
+- auto-login
 
-Installation
----
-1. Clone repository.
-2. Run 'npm install' in the local copy (I hope you have NodeJS and NPM installed =)
-3. Use one of:
-    * `npm run build` for production build
-    * `npm run dev` for development build (no minification)
-    * `npm run start` for live server on `http://localhost:3030/`
+## Type Check Status
 
-Also, Windows shortcuts are here. See `*.bat` files.
-
-Screenshot
----
-
-![screenshot](screenshot.png)
-
-Credit
----
-
-[photo-camera-with-a-flash](https://www.svgrepo.com/svg/5111/photo-camera-with-a-flash)
+[![CircleCI](https://circleci.com/gh/reflation/extension.svg?style=svg)](https://circleci.com/gh/reflation/extension)
