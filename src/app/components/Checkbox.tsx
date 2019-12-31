@@ -11,9 +11,11 @@ const Label = {
   marginLeft: '13px',
 }
 
-export default () => (
+const Checkbox = ({ label }: { label: string }) => (
   <div style={{ ...Wrap }}>
     <input type="checkbox" />
-    <label style={{ ...Label }}>로그인 유지</label>
+    <label style={{ ...Label }}>{label}</label>
   </div>
 )
+
+export const KeepLoginCheckbox = () => <Checkbox label="로그인 유지" />

@@ -2,7 +2,7 @@ import { h } from 'preact'
 
 import { UsernameInput, PasswordInput } from './components/Input'
 import Submit from './components/Submit'
-import CheckBox from './components/CheckBox'
+import { KeepLoginCheckbox } from './components/Checkbox'
 
 import { Box } from '../styles/components/box'
 import { Title } from '../styles/components/Title'
@@ -14,7 +14,7 @@ export default () => (
     <form style={{ ...Form }}>
       <UsernameInput />
       <PasswordInput />
-      <CheckBox />
+      <KeepLoginCheckbox />
       <Submit />
     </form>
   </div>
