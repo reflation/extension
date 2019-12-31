@@ -1,3 +1,4 @@
+const { EnvironmentPlugin } = require('webpack')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanCSSPlugin = require('less-plugin-clean-css')
@@ -98,6 +99,11 @@ module.exports = (env, args) => {
           to: path.resolve('./dist/'),
           toType: 'dir',
           flatten: true,
+        },
+      ]),
+      new EnvironmentPlugin([
+        {
+          isExt: false,
         },
       ]),
     ],
