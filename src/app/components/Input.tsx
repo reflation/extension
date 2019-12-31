@@ -18,7 +18,7 @@ const Icon = {
   color: darken_medium,
 }
 
-export const UserName = () => (
+export const UsernameInput = () => (
   <div style={{ ...LoginOutside, marginBottom: '16px' }}>
     <User style={{ ...Icon }} />
     <input
@@ -29,7 +29,7 @@ export const UserName = () => (
   </div>
 )
 
-export const PassWord = () => (
+export const PasswordInput = () => (
   <div style={{ ...LoginOutside }}>
     <Lock style={{ ...Icon }} />
     <input style={{ ...Input }} name="student_pw" placeholder="비밀번호" />
