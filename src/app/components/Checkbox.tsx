@@ -11,11 +11,15 @@ const Label = {
   marginLeft: '13px',
 }
 
-const Checkbox = ({ label }: { label: string }) => (
+export const Checkbox = (props: Props) => (
   <div style={{ ...Wrap }}>
-    <input type="checkbox" />
-    <label style={{ ...Label }}>{label}</label>
+    <input {...props} type="checkbox" />
+    <label style={{ ...Label }}>{props.value}</label>
   </div>
 )
 
-export const KeepLoginCheckbox = () => <Checkbox label="로그인 유지" />
+type Props = {
+  value: string
+  onChange: (e: any) => void
+  checked: boolean
+}
