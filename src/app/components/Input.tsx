@@ -32,6 +32,11 @@ export const UsernameInput = () => (
 export const PasswordInput = () => (
   <div style={{ ...LoginOutside }}>
     <Lock style={{ ...Icon }} />
-    <input style={{ ...Input }} name="student_pw" placeholder="비밀번호" />
+    <input
+      style={{ ...Input }}
+      type="password"
+      name="student_pw"
+      placeholder="비밀번호"
+    />
   </div>
 )
