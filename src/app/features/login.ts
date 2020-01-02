@@ -26,6 +26,20 @@ export const formSubmit = async (input: FormData) => {
   }
 }
 
+export const submitAndRedirect = async (props: Account) => {
+  await formSubmit(encodeAccount(props))
+  location.href = 'main.do'
+}
+
+export const getElementValues = (target: TargetElements) => {
+  const {
+    student_no: { value: student_no },
+    student_pw: { value: student_pw },
+  } = target
+
+  return { student_no, student_pw }
+}
+
 const Exceed = '5회이상 로그인에 실패하여 10분간 로그인이 제한됩니다.'
 
 type ErrorMessage =
@@ -36,7 +50,7 @@ type ErrorMessage =
   | '아이디 또는 비밀번호를 확인하세요. 5회이상 로그인에 실패한 경우 10분간 로그인이 제한됩니다.(5회 실패)'
   | '5회이상 로그인에 실패하여 10분간 로그인이 제한됩니다.'
 
-type Account = { student_no: string; student_pw: string }
+export type Account = { student_no: string; student_pw: string }
 
 export enum Result {
   'clear',
