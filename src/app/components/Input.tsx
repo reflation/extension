@@ -23,6 +23,7 @@ export const UsernameInput = () => (
     <User style={{ ...Icon }} />
     <input
       style={{ ...Input }}
+      autoFocus
       name="student_no"
       placeholder="학번 혹은 교수번호"
     />
