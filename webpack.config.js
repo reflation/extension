@@ -101,11 +101,7 @@ module.exports = (env, args) => {
           flatten: true,
         },
       ]),
-      new EnvironmentPlugin([
-        {
-          isExt: false,
-        },
-      ]),
+      new EnvironmentPlugin(['isExt']),
     ],
   }
 }

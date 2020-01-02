@@ -5,9 +5,10 @@
   "scripts": {
     "build": "yarn run clean && yarn env:extension webpack --mode production --progress",
     "dev": "yarn run clean && yarn env:extension webpack --mode development --watch",
-    "start": "webpack-dev-server --mode development",
+    "start": "yarn env:server webpack-dev-server --mode development",
     "clean": "rimraf ./dist",
     "env:extension": "cross-env isExt=true",
+    "env:server": "cross-env isExt=false",
     "webext": "web-ext run -p default-release --start-url https://dreamy.jejunu.ac.kr"
   },
   "repository": {
