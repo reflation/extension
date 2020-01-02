@@ -1,9 +1,17 @@
 import { h } from 'preact'
-import { useReducer } from 'preact/hooks'
+import { useReducer, useEffect } from 'preact/hooks'
 
+import {
+  keeLoginItemIsTrue,
+  saveAccountInfo,
+  setKeepLogin,
+  submitWhenKeepLogin,
+} from './features/localStorage'
 import loginReducer, {
-  LoginActions,
   initialState,
+  keepLoginReducer,
+  LoginActions,
+  keepLoginActions,
 } from './features/loginReducer'
 
 import { UsernameInput, PasswordInput } from './components/Input'
@@ -13,20 +21,28 @@ import Submit from './components/Submit'
 import { Box } from '../styles/components/Box'
 import { Title } from '../styles/components/Title'
 import { Form } from '../styles/components/Input'
+import { Checkbox } from './components/Checkbox'
 
 import {
-  formSubmit,
+  submitAndRedirect,
   encodeAccount,
   Result,
   SubmitEvent,
   TargetElements,
+  getElementValues,
 } from './features/login'
 
 export default () => {
-  const [isWrong, dispath] = useReducer<Result, LoginActions>(
+  const [isWrong, dispathWrong] = useReducer<Result, LoginActions>(
     loginReducer,
     initialState
   )
+
+  const [isKeepLogin, dispatchKeepLogin] = useReducer<
+    boolean,
+    keepLoginActions
+  >(keepLoginReducer, keeLoginItemIsTrue())
+
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault()
     try {
@@ -34,14 +50,20 @@ export default () => {
     } catch (err) {
       switch (err) {
         case Result.invalid:
-          dispath('login/invalid')
+          dispathWrong('login/invalid')
         case Result.blocked:
-          dispath('login/blocked')
+          dispathWrong('login/blocked')
       }
       return
     }
-    location.href = 'main.do'
+
+    if (isKeepLogin) saveAccountInfo(getElementValues(e.target))
   }
+
+  useEffect(() => {
+    setKeepLogin(isKeepLogin)
+    submitWhenKeepLogin(isKeepLogin)
+  }, [isKeepLogin])
 
   return (
     <div style={{ ...Box }}>
@@ -50,18 +72,18 @@ export default () => {
         {isWrong !== Result.clear && <WarningLabel result={isWrong} />}
         <UsernameInput />
         <PasswordInput />
+        <Checkbox
+          value="로그인 유지"
+          checked={isKeepLogin}
+          onChange={e => {
+            dispatchKeepLogin(!isKeepLogin ? 'login/keep' : 'login/unKeep')
+          }}
+        />
         <Submit />
       </form>
     </div>
   )
 }
 
-const requestFromTargetElements = (target: TargetElements) => {
-  const { student_no, student_pw } = target
-  return formSubmit(
-    encodeAccount({
-      student_no: student_no.value,
-      student_pw: student_pw.value,
-    })
-  )
-}
+const requestFromTargetElements = (target: TargetElements) =>
+  submitAndRedirect(getElementValues(target))

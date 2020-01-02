@@ -14,3 +14,15 @@ export default (state: Result, action: LoginActions) => {
       throw new Error('Unexpected action')
   }
 }
+
+export type keepLoginActions = 'login/keep' | 'login/unKeep'
+
+export const keepLoginReducer = (state: boolean, action: keepLoginActions) => {
+  switch (action) {
+    case 'login/keep':
+      return true
+    case 'login/unKeep':
+      return false
+      throw new Error('Unexpected action')
+  }
+}
