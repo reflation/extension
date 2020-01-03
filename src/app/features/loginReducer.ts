@@ -1,28 +1,35 @@
 import { Result } from './login'
+import { useReducer } from 'preact/hooks'
+import { isKeepLoginEnabled } from './localStorage'
 
-export const initialState = Result.clear
+export type Action =
+  | 'login/invalid'
+  | 'login/blocked'
+  | 'login/keep'
+  | 'login/unKeep'
 
-export type LoginActions = 'login/invalid' | 'login/blocked'
+type State = { isWrong: Result; isKeepLogin: boolean }
 
-export default (state: Result, action: LoginActions) => {
-  switch (action) {
-    case 'login/invalid':
-      return Result.invalid
-    case 'login/blocked':
-      return Result.blocked
-    default:
-      throw new Error('Unexpected action')
-  }
+export default () => {
+  const [state, dispatch] = useReducer<State, Action>(reducer, initialState)
+  return { ...state, dispatch }
 }
 
-export type keepLoginActions = 'login/keep' | 'login/unKeep'
+const initialState: State = {
+  isWrong: Result.clear,
+  isKeepLogin: isKeepLoginEnabled(),
+}
 
-export const keepLoginReducer = (state: boolean, action: keepLoginActions) => {
+const reducer = (state: State, action: Action) => {
   switch (action) {
+    case 'login/invalid':
+      return { ...state, isWrong: Result.invalid }
+    case 'login/blocked':
+      return { ...state, isWrong: Result.blocked }
     case 'login/keep':
-      return true
+      return { ...state, isKeepLogin: true }
     case 'login/unKeep':
-      return false
+      return { ...state, isKeepLogin: false }
     default:
       throw new Error('Unexpected action')
   }

@@ -2,17 +2,12 @@ import { h } from 'preact'
 import { useReducer, useEffect } from 'preact/hooks'
 
 import {
-  isKeepLoginEnabled,
   saveAccountInfo,
   setKeepLogin,
   submitWhenKeepLogin,
 } from './features/localStorage'
-import loginReducer, {
-  initialState,
-  keepLoginReducer,
-  LoginActions,
-  keepLoginActions,
-} from './features/loginReducer'
+
+import loginReducer from './features/loginReducer'
 
 import { UsernameInput, PasswordInput } from './components/Input'
 import { WarningLabel } from './components/Label'
@@ -32,15 +27,7 @@ import {
 } from './features/login'
 
 export default () => {
-  const [isWrong, dispathWrong] = useReducer<Result, LoginActions>(
-    loginReducer,
-    initialState
-  )
-
-  const [isKeepLogin, dispatchKeepLogin] = useReducer<
-    boolean,
-    keepLoginActions
-  >(keepLoginReducer, isKeepLoginEnabled())
+  const { isWrong, isKeepLogin, dispatch } = loginReducer()
 
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault()
@@ -49,9 +36,9 @@ export default () => {
     } catch (err) {
       switch (err) {
         case Result.invalid:
-          dispathWrong('login/invalid')
+          dispatch('login/invalid')
         case Result.blocked:
-          dispathWrong('login/blocked')
+          dispatch('login/blocked')
       }
       return
     }
@@ -75,7 +62,7 @@ export default () => {
           value="로그인 유지"
           checked={isKeepLogin}
           onChange={e => {
-            dispatchKeepLogin(!isKeepLogin ? 'login/keep' : 'login/unKeep')
+            dispatch(!isKeepLogin ? 'login/keep' : 'login/unKeep')
           }}
         />
         <Submit />
