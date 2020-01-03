@@ -36,9 +36,9 @@ export default () => {
     } catch (err) {
       switch (err) {
         case Result.invalid:
-          dispatch('login/invalid')
+          dispatch('invalid')
         case Result.blocked:
-          dispatch('login/blocked')
+          dispatch('blocked')
       }
       return
     }
@@ -62,7 +62,7 @@ export default () => {
           value="로그인 유지"
           checked={isKeepLogin}
           onChange={e => {
-            dispatch(!isKeepLogin ? 'login/keep' : 'login/unKeep')
+            dispatch(!isKeepLogin ? 'keep' : 'unKeep')
           }}
         />
         <Submit />
