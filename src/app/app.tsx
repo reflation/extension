@@ -2,7 +2,7 @@ import { h } from 'preact'
 import { useReducer, useEffect } from 'preact/hooks'
 
 import {
-  keeLoginItemIsTrue,
+  isKeepLoginEnabled,
   saveAccountInfo,
   setKeepLogin,
   submitWhenKeepLogin,
@@ -25,7 +25,6 @@ import { Checkbox } from './components/Checkbox'
 
 import {
   submitAndRedirect,
-  encodeAccount,
   Result,
   SubmitEvent,
   TargetElements,
@@ -41,7 +40,7 @@ export default () => {
   const [isKeepLogin, dispatchKeepLogin] = useReducer<
     boolean,
     keepLoginActions
-  >(keepLoginReducer, keeLoginItemIsTrue())
+  >(keepLoginReducer, isKeepLoginEnabled())
 
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault()

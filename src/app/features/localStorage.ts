@@ -1,6 +1,6 @@
 import { submitAndRedirect, Account } from './login'
 
-export const keeLoginItemIsTrue = () =>
+export const isKeepLoginEnabled = () =>
   localStorage.getItem('keepLogin') === 'true'
 
 export const saveAccountInfo = (info: Account) => {
