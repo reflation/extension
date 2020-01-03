@@ -7,7 +7,7 @@ import {
   submitWhenKeepLogin,
 } from './features/localStorage'
 
-import loginReducer from './features/loginReducer'
+import useLoginReducer from './features/loginReducer'
 
 import { UsernameInput, PasswordInput } from './components/Input'
 import { WarningLabel } from './components/Label'
@@ -27,7 +27,7 @@ import {
 } from './features/login'
 
 export default () => {
-  const { isWrong, isKeepLogin, dispatch } = loginReducer()
+  const { isWrong, isKeepLogin, dispatch } = useLoginReducer()
 
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault()
