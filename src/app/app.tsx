@@ -48,7 +48,7 @@ export default () => {
 
   useEffect(() => {
     setKeepLogin(isKeepLogin)
-    submitWhenKeepLogin(isKeepLogin)
+    submitWhenKeepLogin()
   }, [isKeepLogin])
 
   return (
