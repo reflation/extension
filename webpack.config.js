@@ -1,5 +1,6 @@
 const { EnvironmentPlugin } = require('webpack')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanCSSPlugin = require('less-plugin-clean-css')
 const path = require('path')
@@ -50,6 +51,8 @@ module.exports = (env, args) => {
     resolve: {
       alias: {
         react: 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
+        'react-dom': 'preact/compat',
       },
       extensions: ['.ts', '.tsx', '.js', '.html', '.txt'],
     },
@@ -59,6 +62,13 @@ module.exports = (env, args) => {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           use: [
+            'babel-loader',
+            {
+              loader: 'linaria/loader',
+              options: {
+                sourceMap: !production,
+              },
+            },
             {
               loader: 'ts-loader',
               options: {
@@ -72,12 +82,33 @@ module.exports = (env, args) => {
           test: /app\.less$/i,
           use: [
             {
-              loader: 'file-loader',
+              loader: MiniCssExtractPlugin.loader,
               options: {
-                name: 'styles/app/[name].css',
+                hmr: !production,
+              },
+            },
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: !production,
               },
             },
             lessLoader,
+          ],
+        },
+        {
+          test: /\.css$/,
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                hmr: !production,
+              },
+            },
+            {
+              loader: 'css-loader',
+              options: { sourceMap: !production },
+            },
           ],
         },
       ],
@@ -102,6 +133,9 @@ module.exports = (env, args) => {
         },
       ]),
       new EnvironmentPlugin(['isExt']),
+      new MiniCssExtractPlugin({
+        filename: 'styles/styles.css',
+      }),
     ],
   }
 }

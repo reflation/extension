@@ -1,13 +1,13 @@
 {
 	"compilerOptions": {
 		"outDir": "./dist",
-		"target": "es5",
+		"target": "esnext",
 		"moduleResolution": "node",
-		"module": "commonjs",
+		"module": "esnext",
 		"noImplicitAny": false,
 		"removeComments": true,
 		"sourceMap": true,
-		"jsx": "react",
+		"jsx": "preserve",
 		"jsxFactory": "h"
 	},
 	"suppressImplicitAnyIndexErrors": true,
