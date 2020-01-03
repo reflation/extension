@@ -23,6 +23,7 @@ export const keepLoginReducer = (state: boolean, action: keepLoginActions) => {
       return true
     case 'login/unKeep':
       return false
+    default:
       throw new Error('Unexpected action')
   }
 }
