@@ -22,6 +22,11 @@ commands:
       - run:
           name: Type Check
           command: yarn tsc
+  lint:
+    steps:
+      - run:
+          name: Check syntax by eslint
+          command: yarn lint
   save-cache:
     steps:
       - save_cache:
@@ -38,6 +43,7 @@ commands:
       - install
       - build
       - tsc
+      - lint
       - save-cache
 jobs:
   v10:

@@ -1,0 +1,64 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": ["plugin:@typescript-eslint/recommended", "prettier", "react"],
+  "plugins": ["@typescript-eslint", "prettier", "react"],
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module",
+    "jsx": true
+  },
+  "settings": {
+    "react": {
+      "pragma": "h",
+      "version": "16.12.0"
+    }
+  },
+  "env": {
+    "node": true,
+    "es6": true,
+    "browser": true
+  },
+  "rules": {
+    "indent": [2, 2, { "SwitchCase": 1 }],
+    "semi": "off",
+    "comma-dangle": ["error", "only-multiline"],
+    "no-use-before-define": "off",
+    "camelcase": "off",
+    "operator-linebreak": "off",
+
+    "react/react-in-jsx-scope": "off",
+    "react/display-name": "off",
+    "react/jsx-no-bind": "off",
+    "react/jsx-tag-spacing": [2, { "beforeSelfClosing": "always" }],
+    "react/jsx-uses-react": 2,
+    "react/prefer-stateless-function": 1,
+    "react/require-render-return": 2,
+    "react/self-closing-comp": 2,
+    "react/sort-comp": [
+      1,
+      {
+        "order": [
+          "properties",
+          "static-methods",
+          "everything-else",
+          "lifecycle",
+          "rendering"
+        ],
+        "groups": {
+          "properties": ["state"],
+          "rendering": ["/^render.+$/", "render"]
+        }
+      }
+    ],
+
+    "prettier/prettier": "warn",
+
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/member-delimiter-style": "off"
+  }
+}

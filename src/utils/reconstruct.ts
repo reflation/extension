@@ -4,6 +4,7 @@ export const reconstruct = (title: string) => {
   root.innerHTML = [
     '<head>',
     '<meta charset="utf-8">',
+    // eslint-disable-next-line max-len
     '<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">',
     `<title>${title}</title>`,
     '</head>',
@@ -13,4 +14,5 @@ export const reconstruct = (title: string) => {
   ].join('')
 }
 
+// eslint-disable-next-line max-len
 const Style = `display: flex; justify-content: center; width: 100vw; height: 100vh; background-color: #F7F7F7; font-size: 16px;`
