@@ -1,4 +1,4 @@
-import { h } from 'preact'
+import { h, JSX } from 'preact'
 import { Regular } from '../../styles/components/Text'
 
 const Wrap = {
@@ -20,6 +20,6 @@ export const Checkbox = (props: Props) => (
 
 type Props = {
   value: string
-  onChange: (e: any) => void
+  onChange: (e: JSX.TargetedEvent<HTMLInputElement, Event>) => void
   checked: boolean
 }
