@@ -8,7 +8,7 @@ import { Regular } from '../../styles/components/Text'
 
 export const WarningLabel = memo(
   ({ result }: { result: Result.invalid | Result.blocked }) => (
-    <label style={{ color: red, ...Regular, paddingBottom: '1rem' }}>
+    <label class={Regular} style={{ color: red, paddingBottom: '1rem' }}>
       {result === Result.invalid
         ? '계정 정보가 유효하지 않습니다!'
         : '6회 이상 틀려 10분간 로그인이 제한됩니다'}
