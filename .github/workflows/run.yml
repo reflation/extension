@@ -1,0 +1,38 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Lint & Type-check
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - name: setup
+        uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with: { node-version: 12.x }
+      - run: yarn install
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('$GITHUB_WORKSPACE/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - run: yarn tsc
+      - run: yarn audit
+      - name: ESLint
+        run: yarn lint
+      - run: yarn build
+      - name: web-ext lint
+        run: yarn web-ext lint
+      - uses: actions/upload-artifact@v1
+        if: success()
+        with:
+          name: dist
+          path: $GITHUB_WORKSPACE/dist
