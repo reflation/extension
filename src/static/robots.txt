@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /scripts/
-
-User-agent: *
-Disallow: /styles/
