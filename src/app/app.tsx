@@ -52,9 +52,9 @@ export default () => {
   }, [isKeepLogin])
 
   return (
-    <div style={{ ...Box }}>
-      <h1 style={{ ...Title }}>로그인</h1>
-      <form style={{ ...Form }} onSubmit={handleSubmit}>
+    <div class={Box}>
+      <h1 class={Title}>로그인</h1>
+      <form class={Form} onSubmit={handleSubmit}>
         {isWrong !== Result.clear && <WarningLabel result={isWrong} />}
         <UsernameInput />
         <PasswordInput />

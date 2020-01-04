@@ -1,11 +1,13 @@
-export const Regular = {
-  fontWeight: 400,
-}
+import { css } from 'linaria'
 
-export const Bold = {
-  fontWeight: 700,
-}
+export const Regular = css`
+  font-weight: 400;
+`
 
-export const ExtraBold = {
-  fontWeight: 800,
-}
+export const Bold = css`
+  font-weight: 700;
+`
+
+export const ExtraBold = css`
+  font-weight: 800;
+`
