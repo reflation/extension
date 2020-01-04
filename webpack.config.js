@@ -1,3 +1,4 @@
+/* eslint-disable */
 const { EnvironmentPlugin } = require('webpack')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')

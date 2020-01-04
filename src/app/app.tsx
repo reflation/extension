@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { useReducer, useEffect } from 'preact/hooks'
+import { useEffect } from 'preact/hooks'
 
 import {
   saveAccountInfo,
@@ -61,9 +61,7 @@ export default () => {
         <Checkbox
           value="로그인 유지"
           checked={isKeepLogin}
-          onChange={e => {
-            dispatch(!isKeepLogin ? 'keep' : 'unKeep')
-          }}
+          onChange={() => dispatch(!isKeepLogin ? 'keep' : 'unKeep')}
         />
         <Submit />
       </form>

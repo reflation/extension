@@ -1,4 +1,4 @@
-import { transparent, black } from '../colors'
+import { transparent } from '../colors'
 
 export const Form = {
   display: 'flex',
@@ -13,8 +13,4 @@ export const Input = {
   fontSize: '16px',
   lineHeight: 2,
   backgroundColor: transparent,
-  // ':placeholder': {
-  //   color: black,
-  //   fontFamily: 'NanumSquareRound',
-  // },
 }
