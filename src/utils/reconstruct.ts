@@ -15,4 +15,4 @@ export const reconstruct = (title: string) => {
 }
 
 // eslint-disable-next-line max-len
-const Style = `display: flex; justify-content: center; width: 100vw; height: 100vh; background-color: #F7F7F7; font-size: 16px;`
+const Style = `display: flex; flex-direction: column; overflow-x: hidden; width: 100vw; height: 100vh; background-color: #F7F7F7; font-size: 16px`
