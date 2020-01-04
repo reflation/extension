@@ -1,20 +1,23 @@
 import { h, JSX } from 'preact'
 import { Regular } from '../../styles/components/Text'
+import { cx, css } from 'linaria'
 
-const Wrap = {
-  marginTop: '1rem',
-  marginLeft: '13px',
-}
+const Wrap = css`
+  margin-top: 1rem;
+  margin-left: 13px;
+`
 
-const Label = {
-  ...Regular,
-  marginLeft: '13px',
-}
+const Label = cx(
+  Regular,
+  css`
+    margin-left: 13px;
+  `
+)
 
 export const Checkbox = (props: Props) => (
-  <div style={{ ...Wrap }}>
+  <div class={Wrap}>
     <input {...props} type="checkbox" />
-    <label style={{ ...Label }}>{props.value}</label>
+    <label class={Label}>{props.value}</label>
   </div>
 )
 
