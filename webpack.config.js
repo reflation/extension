@@ -27,7 +27,6 @@ module.exports = (env, args) => {
     devtool: production ? false : 'source-map',
     optimization: {
       splitChunks: {
-        // always create vendor.js
         cacheGroups: {
           vendor: {
             test: /[\\/]node_modules[\\/]/,
@@ -95,7 +94,6 @@ module.exports = (env, args) => {
     plugins: [
       new ForkTsCheckerWebpackPlugin(),
       new CopyWebpackPlugin([
-        // static files to the site root folder (index and robots)
         {
           from: './src/static/**/*',
           to: path.resolve('./dist/'),
