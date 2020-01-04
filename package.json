@@ -9,6 +9,7 @@
     "clean": "rimraf ./dist",
     "env:extension": "cross-env isExt=true",
     "env:server": "cross-env isExt=false",
+    "lint": "eslint --ext .ts,.tsx src/",
     "webext": "web-ext run -p default-release --start-url https://dreamy.jejunu.ac.kr"
   },
   "repository": {
