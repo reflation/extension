@@ -12,7 +12,8 @@
     "baseUrl": ".",
     "paths": {
 			"react": ["node_modules/preact/compat"],
-			"react-dom": ["node_modules/preact/compat"]
+			"react-dom": ["node_modules/preact/compat"],
+			"linaria/react": ["src/utils/styled.ts"]
     }
   },
   "suppressImplicitAnyIndexErrors": true,
