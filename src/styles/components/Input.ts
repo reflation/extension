@@ -1,16 +1,21 @@
-import { transparent } from '../colors'
+import { transparent, black } from '../colors'
+import { css } from 'linaria'
 
-export const Form = {
-  display: 'flex',
-  width: '100%',
-  flexDirection: 'column',
-  marginTop: '93px',
-}
+export const Form = css`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-top: 93px;
+`
 
-export const Input = {
-  padding: '0px 12px',
-  borderRadius: '18px',
-  fontSize: '16px',
-  lineHeight: 2,
-  backgroundColor: transparent,
-}
+export const Input = css`
+  padding: 0px 12px;
+  border-radius: 18px;
+  font-size: 16px;
+  line-height: 2;
+  background-color: ${transparent};
+  ::placeholder {
+    color: ${black};
+    font-family: 'NanumSquareRound', sans-serif;
+  }
+`

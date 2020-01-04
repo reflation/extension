@@ -2,6 +2,7 @@ import { h } from 'preact'
 
 import { primary } from '../../styles/colors'
 import { ExtraBold } from '../../styles/components/Text'
+import { css, cx } from 'linaria'
 
 const Template = {
   height: '50px',
@@ -14,15 +15,14 @@ const Template = {
   alignSelf: 'center',
 }
 
-const Text = {
-  ...ExtraBold,
-  color: 'white',
-  fontSize: '24px',
-  textAlign: 'center',
-}
+const Text = css`
+  color: white;
+  font-size: 24px;
+  text-align: center;
+`
 
 export default () => (
   <button type="submit" style={{ ...Template }}>
-    <span style={{ ...Text }}>LOGIN</span>
+    <span class={cx(ExtraBold, Text)}>LOGIN</span>
   </button>
 )
