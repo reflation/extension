@@ -4,6 +4,9 @@
   "plugins": ["@typescript-eslint", "prettier", "react"],
   "parserOptions": {
     "ecmaVersion": 2019,
+    "ecmaFeatures": {
+      "jsx": true
+    },
     "sourceType": "module",
     "jsx": true
   },
