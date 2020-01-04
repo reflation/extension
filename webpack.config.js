@@ -16,17 +16,6 @@ module.exports = (env, args) => {
     console.log('== Development mode')
   }
 
-  const lessLoader = production
-    ? {
-        loader: 'less-loader',
-        options: {
-          plugins: [new CleanCSSPlugin({ advanced: true })],
-        },
-      }
-    : {
-        loader: 'less-loader',
-      }
-
   return {
     entry: {
       'scripts/main': './src/bootstrap.tsx',
@@ -76,25 +65,6 @@ module.exports = (env, args) => {
                 transpileOnly: true,
               },
             },
-          ],
-        },
-        // app main .less file
-        {
-          test: /app\.less$/i,
-          use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-              options: {
-                hmr: !production,
-              },
-            },
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: !production,
-              },
-            },
-            lessLoader,
           ],
         },
         {
