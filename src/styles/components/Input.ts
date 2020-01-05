@@ -1,14 +1,14 @@
 import { transparent, black } from '../colors'
-import { css } from 'linaria'
+import { styled } from 'linaria/react'
 
-export const Form = css`
+export const Form = styled.form`
   display: flex;
   width: 100%;
   flex-direction: column;
   margin-top: 93px;
 `
 
-export const Input = css`
+export const Input = styled.input`
   padding: 0px 12px;
   border-radius: 18px;
   font-size: 16px;

@@ -1,5 +1,5 @@
-import { css } from 'linaria'
 import { mainBoxShadow, white } from '../colors'
+import { styled } from 'linaria/react'
 
 export const Root = `display: flex; justify-content: center; width: 100vw; height: 100vh; background-color: #F7F7F7`
 
@@ -10,7 +10,7 @@ export const Template = `
   background-color: ${white};
 `
 
-export const Box = css`
+export const Box = styled.div`
   ${Template}
   width: 430px;
   border-radius: 15px;
