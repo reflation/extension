@@ -1,38 +1,38 @@
 import { h } from 'preact'
-import { cx, css } from 'linaria'
+import { styled } from 'linaria/react'
 
 import { RotateCcw, Github } from 'preact-feather'
 
 import { Regular } from '../../styles/components/Text'
 
 export default ({ optOutUrl }: { optOutUrl: string }) => (
-  <footer class={Footer}>
-    <div class={OuterContainer}>
-      <div class={InnerContainer}>
-        <span class={Copyright}>
+  <Footer>
+    <OuterContainer>
+      <InnerContainer>
+        <Copyright>
           <span> © 2019 reflation </span>
-        </span>
-        <div class={Contacts}>
-          <span class={ViewOrginalPage}>
+        </Copyright>
+        <Contacts>
+          <ViewOrginalPage>
             <a href={optOutUrl}>
               <RotateCcw {...Icon} /> 원본 페이지 보기
             </a>
-          </span>
+          </ViewOrginalPage>
           <span>
             <a href="https://github.com/reflation">
               <Github {...Icon} /> github.com/reflation
             </a>
           </span>
-        </div>
-      </div>
-    </div>
-  </footer>
+        </Contacts>
+      </InnerContainer>
+    </OuterContainer>
+  </Footer>
 )
 
 const footer_bg = '#e7e7e7'
 const contactText = '#929292'
 
-const Footer = css`
+const Footer = styled.footer`
   display: flex;
   min-height: 8rem;
   align-items: center;
@@ -43,14 +43,14 @@ const Footer = css`
   }
 `
 
-const OuterContainer = css`
+const OuterContainer = styled.div`
   padding: 0 0.5rem;
   margin-right: auto;
   margin-left: auto;
   width: 90vw;
 `
 
-const InnerContainer = css`
+const InnerContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -60,36 +60,32 @@ const InnerContainer = css`
   }
 `
 
-const Copyright = cx(
-  Regular,
-  css`
-    color: #b1b1b1;
-    @media screen and (max-width: 768px) {
-      align-self: center;
-    }
-  `
-)
+const Copyright = styled.span`
+  ${Regular}
+  color: #b1b1b1;
+  @media screen and (max-width: 768px) {
+    align-self: center;
+  }
+`
 
-const Contacts = cx(
-  Regular,
-  css`
-    display: flex;
-    padding: 12px;
-    > * {
-      color: ${contactText};
-      padding: 4px;
-    }
-    a {
-      text-decoration: none;
-      color: ${contactText};
-    }
-    @media screen and (max-width: 768px) {
-      flex-direction: column;
-      padding-top: 24px;
-      padding-bottom: 0;
-    }
-  `
-)
+const Contacts = styled.div`
+  ${Regular}
+  display: flex;
+  padding: 12px;
+  > * {
+    color: ${contactText};
+    padding: 4px;
+  }
+  a {
+    text-decoration: none;
+    color: ${contactText};
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    padding-top: 24px;
+    padding-bottom: 0;
+  }
+`
 
 const Icon = {
   color: contactText,
@@ -97,7 +93,7 @@ const Icon = {
   style: { verticalAlign: 'bottom' },
 } as const
 
-const ViewOrginalPage = css`
+const ViewOrginalPage = styled.span`
   padding-right: 64px;
   @media screen and (max-width: 768px) {
     padding-right: unset;
