@@ -9,10 +9,7 @@ export const reconstruct = (title: string) => {
     `<title>${title}</title>`,
     '</head>',
     '<body>',
-    `<div id="app" style="${Style}"/>`,
+    `<div id="app"/>`,
     '</body>',
   ].join('')
 }
-
-// eslint-disable-next-line max-len
-const Style = `display: flex; justify-content: center; width: 100vw; height: 100vh; background-color: #F7F7F7; font-size: 16px;`

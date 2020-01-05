@@ -1,7 +1,8 @@
 import { h, render } from 'preact'
 import App from './app/app'
 
-import './styles/app.less'
+import './styles/reset.css'
+import './styles/theme.css'
 
 import { reconstruct } from './utils/reconstruct'
 

@@ -16,17 +16,6 @@ module.exports = (env, args) => {
     console.log('== Development mode')
   }
 
-  const lessLoader = production
-    ? {
-        loader: 'less-loader',
-        options: {
-          plugins: [new CleanCSSPlugin({ advanced: true })],
-        },
-      }
-    : {
-        loader: 'less-loader',
-      }
-
   return {
     entry: {
       'scripts/main': './src/bootstrap.tsx',
@@ -38,7 +27,6 @@ module.exports = (env, args) => {
     devtool: production ? false : 'source-map',
     optimization: {
       splitChunks: {
-        // always create vendor.js
         cacheGroups: {
           vendor: {
             test: /[\\/]node_modules[\\/]/,
@@ -78,25 +66,6 @@ module.exports = (env, args) => {
             },
           ],
         },
-        // app main .less file
-        {
-          test: /app\.less$/i,
-          use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-              options: {
-                hmr: !production,
-              },
-            },
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: !production,
-              },
-            },
-            lessLoader,
-          ],
-        },
         {
           test: /\.css$/,
           use: [
@@ -125,7 +94,6 @@ module.exports = (env, args) => {
     plugins: [
       new ForkTsCheckerWebpackPlugin(),
       new CopyWebpackPlugin([
-        // static files to the site root folder (index and robots)
         {
           from: './src/static/**/*',
           to: path.resolve('./dist/'),
