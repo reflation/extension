@@ -13,8 +13,10 @@ import {
 
 const main = async () => {
   if (isOptOut()) return
-  if (!(await isSessionExpired())) location.href = 'main.do'
-  if (process.env.isExt === 'true') reconstruct('하영드리미: 로그인')
+  if (process.env.isExt === 'true') {
+    if (!(await isSessionExpired())) location.href = 'main.do'
+    reconstruct('하영드리미: 로그인')
+  }
   render(<App optOutUrl={optOutUrl()} />, document.querySelector('#app'))
 }
 
