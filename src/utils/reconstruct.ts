@@ -1,14 +1,15 @@
 import axios from 'axios'
 
 const optOutQueryKey = 'enable'
+const sessionExpired =
+  "<SCRIPT type=text/javascript>	alert('Session 이 종료되었습니다.');	top.location='/frame/sysUser.do'    </SCRIPT>"
 
 export const isSessionExpired = async () => {
   const { data } = await axios.get<string>(
     'https://dreamy.jejunu.ac.kr/frame/main.do',
     { headers: { Cookie: document.cookie } }
   )
-
-  return data.includes('Session 이 종료되었습니다.')
+  return data === sessionExpired
 }
 
 export const isOptOut = () => {
