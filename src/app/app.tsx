@@ -1,7 +1,7 @@
 import { h, Fragment } from 'preact'
 import { useEffect } from 'preact/hooks'
 
-import { cx, css } from 'linaria'
+import { styled } from 'linaria/react'
 
 import {
   saveAccountInfo,
@@ -56,10 +56,10 @@ export default ({ optOutUrl }: OptOutUrl) => {
 
   return (
     <Fragment>
-      <main class={Main}>
-        <div class={Card}>
-          <h1 class={Title}>로그인</h1>
-          <form class={Form} onSubmit={handleSubmit}>
+      <Main>
+        <Card>
+          <Title>로그인</Title>
+          <Form onSubmit={handleSubmit}>
             {isWrong !== Result.clear && <WarningLabel result={isWrong} />}
             <UsernameInput />
             <PasswordInput />
@@ -69,9 +69,9 @@ export default ({ optOutUrl }: OptOutUrl) => {
               onChange={() => dispatch(!isKeepLogin ? 'keep' : 'unKeep')}
             />
             <Submit />
-          </form>
-        </div>
-      </main>
+          </Form>
+        </Card>
+      </Main>
       <Footer optOutUrl={optOutUrl} />
     </Fragment>
   )
@@ -80,7 +80,7 @@ export default ({ optOutUrl }: OptOutUrl) => {
 const requestFromTargetElements = (target: TargetElements) =>
   submitAndRedirect(getElementValues(target))
 
-const Main = css`
+const Main = styled.main`
   flex: 1 0 auto;
   justify-content: center;
   display: flex;
@@ -91,12 +91,9 @@ const Main = css`
   margin-left: auto;
 `
 
-const Card = cx(
-  Box,
-  css`
-    display: flex;
-    justify-content: center;
-  `
-)
+const Card = styled(Box)`
+  display: flex;
+  justify-content: center;
+`
 
 type OptOutUrl = { optOutUrl: string }
