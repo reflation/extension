@@ -1,5 +1,7 @@
-import { h } from 'preact'
+import { h, Fragment } from 'preact'
 import { useEffect } from 'preact/hooks'
+
+import { cx, css } from 'linaria'
 
 import {
   saveAccountInfo,
@@ -25,8 +27,9 @@ import {
   TargetElements,
   getElementValues,
 } from './features/login'
+import Footer from './components/Footer'
 
-export default () => {
+export default ({ optOutUrl }: OptOutUrl) => {
   const { isWrong, isKeepLogin, dispatch } = useLoginReducer()
 
   const handleSubmit = async (e: SubmitEvent) => {
@@ -52,22 +55,48 @@ export default () => {
   }, [isKeepLogin])
 
   return (
-    <div class={Box}>
-      <h1 class={Title}>로그인</h1>
-      <form class={Form} onSubmit={handleSubmit}>
-        {isWrong !== Result.clear && <WarningLabel result={isWrong} />}
-        <UsernameInput />
-        <PasswordInput />
-        <Checkbox
-          value="로그인 유지"
-          checked={isKeepLogin}
-          onChange={() => dispatch(!isKeepLogin ? 'keep' : 'unKeep')}
-        />
-        <Submit />
-      </form>
-    </div>
+    <Fragment>
+      <main class={Main}>
+        <div class={Card}>
+          <h1 class={Title}>로그인</h1>
+          <form class={Form} onSubmit={handleSubmit}>
+            {isWrong !== Result.clear && <WarningLabel result={isWrong} />}
+            <UsernameInput />
+            <PasswordInput />
+            <Checkbox
+              value="로그인 유지"
+              checked={isKeepLogin}
+              onChange={() => dispatch(!isKeepLogin ? 'keep' : 'unKeep')}
+            />
+            <Submit />
+          </form>
+        </div>
+      </main>
+      <Footer optOutUrl={optOutUrl} />
+    </Fragment>
   )
 }
 
 const requestFromTargetElements = (target: TargetElements) =>
   submitAndRedirect(getElementValues(target))
+
+const Main = css`
+  flex: 1 0 auto;
+  justify-content: center;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  padding: 0 0.5rem;
+  margin-right: auto;
+  margin-left: auto;
+`
+
+const Card = cx(
+  Box,
+  css`
+    display: flex;
+    justify-content: center;
+  `
+)
+
+type OptOutUrl = { optOutUrl: string }
