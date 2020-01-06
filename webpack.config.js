@@ -73,7 +73,7 @@ module.exports = (env, args) => {
               loader: MiniCssExtractPlugin.loader,
               options: {
                 hmr: !production,
-                publicPath: '../',
+                publicPath: '../'
               },
             },
             {
@@ -83,10 +83,6 @@ module.exports = (env, args) => {
               },
             },
           ],
-        },
-        {
-          test: /\.(eot|otf|svg|ttf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-          use: ['file-loader?outputPath=fonts'],
         },
       ],
     },
