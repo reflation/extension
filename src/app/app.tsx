@@ -18,7 +18,7 @@ import Submit from './components/Submit'
 import { Box } from '../styles/components/Box'
 import { Title } from '../styles/components/Title'
 import { Form } from '../styles/components/Input'
-import { CheckboxWithText } from './components/Checkbox'
+import { LabeledCheckbox } from './components/Checkbox'
 
 import {
   submitAndRedirect,
@@ -63,7 +63,7 @@ export default ({ optOutUrl }: OptOutUrl) => {
             {isWrong !== Result.clear && <WarningLabel result={isWrong} />}
             <UsernameInput />
             <PasswordInput />
-            <CheckboxWithText
+            <LabeledCheckbox
               value="로그인 유지"
               checked={isKeepLogin}
               onChange={() => dispatch(!isKeepLogin ? 'keep' : 'unKeep')}
