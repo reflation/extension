@@ -74,7 +74,7 @@ const Checkbox = (props: Props) => (
   </Label>
 )
 
-export const CheckboxWithText = (props: Props) => (
+export const LabeledCheckbox = (props: Props) => (
   <Wrap>
     <Checkbox {...props} />
     <Text>{props.value}</Text>
