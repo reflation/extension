@@ -33,13 +33,18 @@ const Checkmark = styled.span`
   height: 1rem;
   width: 1rem;
   border-radius: 2px;
+
+  & {
   border: solid 1px #d9d9d9;
   background-color: ${white};
+    transition: background-color 0.2s ease-in-out, border-width 0.2s ease-in-out;
+  } /* CSS specificity hack */
 
   ::after {
     content: '';
     position: absolute;
-    display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
 
     left: 5.76px;
     top: 3.2px;
@@ -59,11 +64,11 @@ const Input = styled.input`
 
   :checked ~ span {
     background-color: ${primary};
-    border: solid 1px transparent;
+    border-width: 0;
   }
 
   :checked ~ span:after {
-    display: block;
+    opacity: 1;
   }
 `
 
