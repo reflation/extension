@@ -1,10 +1,28 @@
 @font-face {
   font-family: '나눔스퀘어라운드';
   src: local('NanumSquareRound'), local('NanumSquareRoundOTF'),
-    url(~@kfonts/nanum-square-round/NanumSquareRoundL.woff2) format('woff2');
+    url(~@kfonts/nanum-square-round/NanumSquareRoundR.woff2) format('woff2');
   font-display: swap;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: '나눔스퀘어라운드';
+  src: local('NanumSquareRound'), local('NanumSquareRoundOTF'),
+    url(~@kfonts/nanum-square-round/NanumSquareRoundB.woff2) format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: '나눔스퀘어라운드';
+  src: local('NanumSquareRound'), local('NanumSquareRoundOTF'),
+    url(~@kfonts/nanum-square-round/NanumSquareRoundEB.woff2) format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 800;
 }
 
 body,
