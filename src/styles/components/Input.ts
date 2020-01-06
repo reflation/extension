@@ -16,6 +16,6 @@ export const Input = styled.input`
   background-color: ${transparent};
   ::placeholder {
     color: ${black};
-    font-family: 'NanumSquareRound', sans-serif;
+    font-family: '나눔스퀘어라운드', sans-serif;
   }
 `

@@ -1,8 +1,7 @@
 @font-face {
   font-family: '나눔스퀘어라운드';
-  src: local('나눔스퀘어라운드 '),
-       local('나눔스퀘어라운드'),
-       url(~@kfonts/nanum-square-round/NanumSquareRoundL.woff2) format('woff2');
+  src: local('NanumSquareRound'), local('NanumSquareRoundOTF'),
+    url(~@kfonts/nanum-square-round/NanumSquareRoundL.woff2) format('woff2');
   font-display: swap;
   font-style: normal;
   font-weight: 300;
@@ -10,7 +9,7 @@
 
 body,
 button {
-  font-family: '나눔스퀘어라운드', 'NanumSquareRound', 'NanumSquareRoundOTF';
+  font-family: '나눔스퀘어라운드', sans-serif;
 }
 
 #app {
