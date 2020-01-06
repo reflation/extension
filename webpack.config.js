@@ -73,17 +73,20 @@ module.exports = (env, args) => {
               loader: MiniCssExtractPlugin.loader,
               options: {
                 hmr: !production,
+                publicPath: '../'
               },
             },
             {
               loader: 'css-loader',
-              options: { sourceMap: !production },
+              options: {
+                sourceMap: !production,
+              },
             },
           ],
         },
         {
           test: /\.(eot|otf|svg|ttf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-          use: ['file-loader?name=fonts/[name].[ext]'],
+          use: ['file-loader?outputPath=fonts'],
         },
       ],
     },
@@ -108,6 +111,7 @@ module.exports = (env, args) => {
       new EnvironmentPlugin(['isExt']),
       new MiniCssExtractPlugin({
         filename: 'styles/styles.css',
+        publicPath: 'styles/',
       }),
     ],
   }
