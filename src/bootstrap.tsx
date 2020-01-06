@@ -1,7 +1,6 @@
 import { h, render } from 'preact'
 import App from './app/app'
 
-import '@kfonts/nanum-square-round'
 import './styles/reset.css'
 import './styles/theme.css'
 
