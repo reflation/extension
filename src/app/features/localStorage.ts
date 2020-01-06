@@ -12,8 +12,8 @@ export const setKeepLogin = (isKeepLogin: boolean) => {
 }
 
 export const submitWhenKeepLogin = async () => {
-  if (isKeepLoginEnabled()) {
-    const account: Account = JSON.parse(localStorage.getItem('account'))
+  const account: Account | null = JSON.parse(localStorage.getItem('account'))
+  if (isKeepLoginEnabled() && account) {
     await submitAndRedirect(account)
   }
 }
