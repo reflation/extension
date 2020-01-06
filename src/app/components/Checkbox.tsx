@@ -28,15 +28,15 @@ const Text = styled.span`
 
 const Checkmark = styled.span`
   position: absolute;
-  top: -2px;
   left: 0;
   height: 1rem;
   width: 1rem;
   border-radius: 2px;
+  box-sizing: border-box;
 
   & {
-  border: solid 1px #d9d9d9;
-  background-color: ${white};
+    border: solid 1px #d9d9d9;
+    background-color: ${white};
     transition: background-color 0.2s ease-in-out, border-width 0.2s ease-in-out;
   } /* CSS specificity hack */
 
