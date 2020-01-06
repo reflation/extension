@@ -14,9 +14,6 @@ const Label = styled.label`
 
   cursor: pointer;
   font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 
   :hover > span {
@@ -51,8 +48,6 @@ const Checkmark = styled.span`
     border: solid white;
     border-radius: 2px;
     border-width: 0 2px 2px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
 `
