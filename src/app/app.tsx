@@ -40,8 +40,10 @@ export default ({ optOutUrl }: OptOutUrl) => {
       switch (err) {
         case Result.invalid:
           dispatch('invalid')
+          break
         case Result.blocked:
           dispatch('blocked')
+          break
       }
       return
     }
