@@ -1,23 +1,27 @@
 import { h } from 'preact'
 import { User, Lock } from 'preact-feather'
 
-import { Input } from '../../styles/components/Input'
+import { Input as InputOrigin } from '../../styles/components/Input'
 import { darken_ultra, darken_medium } from '../../styles/colors'
 import { css } from 'linaria'
 import { styled } from 'linaria/react'
 
 const LoginOutside = styled.div`
+  display: flex;
   border-radius: 18px;
-  padding-left: 14px;
-  padding-right: 7px;
   padding-top: 5px;
   padding-bottom: 5px;
   background-color: ${darken_ultra};
 `
 
 const Icon = css`
-  vertical-align: middle;
+  flex: 1;
+  align-self: center;
   color: ${darken_medium};
+`
+
+const Input = styled(InputOrigin)`
+  flex: 9;
 `
 
 export const UsernameInput = () => (
