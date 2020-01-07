@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import { User, Lock } from 'preact-feather'
 
-import { Input as InputOrigin } from '../../styles/components/Input'
+import { Input as OriginalInput } from '../../styles/components/Input'
 import { darken_ultra, darken_medium } from '../../styles/colors'
 import { css } from 'linaria'
 import { styled } from 'linaria/react'
@@ -20,7 +20,7 @@ const Icon = css`
   color: ${darken_medium};
 `
 
-const Input = styled(InputOrigin)`
+const Input = styled(OriginalInput)`
   flex: 9;
 `
 
