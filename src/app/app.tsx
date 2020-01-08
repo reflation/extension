@@ -62,9 +62,9 @@ export default ({ optOutUrl }: OptOutUrl) => {
         <Card>
           <Title>로그인</Title>
           <Form onSubmit={handleSubmit}>
-            {isWrong !== Result.clear && <WarningLabel result={isWrong} />}
-            <UsernameInput />
-            <PasswordInput />
+            {isWrong === Result.blocked && <WarningLabel />}
+            <UsernameInput isWrong={isWrong !== Result.clear} />
+            <PasswordInput isWrong={isWrong !== Result.clear} />
             <LabeledCheckbox
               value="로그인 유지"
               checked={isKeepLogin}
