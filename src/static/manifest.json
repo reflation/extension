@@ -11,6 +11,11 @@
       "matches": ["https://dreamy.jejunu.ac.kr/frame/index.do*"],
       "js": ["scripts/main.js", "scripts/vendor.js"],
       "css": ["styles/styles.css"]
+    },
+    {
+      "run_at": "document_idle",
+      "matches": ["https://dreamy.jejunu.ac.kr/frame/main.do"],
+      "js": ["scripts/logout.js"]
     }
   ]
 }
