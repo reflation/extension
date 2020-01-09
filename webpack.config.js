@@ -1,6 +1,8 @@
 /* eslint-disable */
 const { EnvironmentPlugin } = require('webpack')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const TerserJSPlugin = require('terser-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanCSSPlugin = require('less-plugin-clean-css')
@@ -26,6 +28,7 @@ module.exports = (env, args) => {
     target: 'web',
     devtool: production ? false : 'source-map',
     optimization: {
+      minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
       splitChunks: {
         cacheGroups: {
           vendor: {
