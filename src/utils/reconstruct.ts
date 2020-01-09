@@ -34,6 +34,11 @@ export const reconstruct = (title: string) => {
     '<meta charset="utf-8">',
     // eslint-disable-next-line max-len
     '<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">',
+    `<link
+      rel="stylesheet"
+      href="https://d14yqt9xa48dep.cloudfront.net/nanumsquareround.min.css"
+      media="all"
+    />`,
     `<title>${title}</title>`,
     '</head>',
     '<body>',
