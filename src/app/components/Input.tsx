@@ -1,4 +1,4 @@
-import { h } from 'preact'
+import { h, JSX } from 'preact'
 import { User, Lock } from 'preact-feather'
 
 import { Input as OriginalInput } from '../../styles/components/Input'
@@ -6,7 +6,7 @@ import { darken_ultra, darken_medium, invaild } from '../../styles/colors'
 import { css } from 'linaria'
 import { styled } from 'linaria/react'
 
-const LoginOutside = styled.div<IsWrong>`
+const LoginOutside = styled.div<IsWrong & JSX.HTMLAttributes<HTMLDivElement>>`
   display: flex;
   border-radius: 18px;
   padding-top: 5px;
