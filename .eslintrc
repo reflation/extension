@@ -61,13 +61,5 @@
     "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/member-delimiter-style": "off"
-  },
-  "overrides": [
-    {
-      "files": ["src/utils/styled.ts"],
-      "rules": {
-        "@typescript-eslint/no-explicit-any": "off"
-      }
-    }
-  ]
+  }
 }

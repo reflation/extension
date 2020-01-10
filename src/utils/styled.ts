@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { styled as original } from 'linaria/react'
 import { JSX, ComponentType, FunctionComponent } from 'preact'
 
