@@ -11,10 +11,15 @@ import {
   optOutUrl,
 } from './utils/reconstruct'
 
+import { submitWhenKeepLogin } from './app/features/localStorage'
+
 const main = async () => {
   if (isOptOut()) return
   if (process.env.isExt === 'true') {
-    if (!(await isSessionExpired())) location.href = 'main.do'
+    if (!(await isSessionExpired()) || (await submitWhenKeepLogin())) {
+      location.href = 'main.do'
+    }
+
     reconstruct('하영드리미: 로그인')
   }
   render(<App optOutUrl={optOutUrl()} />, document.querySelector('#app'))
