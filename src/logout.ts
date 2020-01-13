@@ -1,8 +1,8 @@
-function getDocuemntFromIFrame(frameRef: HTMLIFrameElement): HTMLDocument {
-  return frameRef.contentWindow
+const getDocuemntFromIFrame = (frameRef: HTMLIFrameElement) =>
+  frameRef.contentWindow
     ? frameRef.contentWindow.document
     : frameRef.contentDocument
-}
+
 setTimeout(() => {
   getDocuemntFromIFrame(
     document.getElementById('leftFrame') as HTMLIFrameElement
