@@ -3,6 +3,10 @@ function getDocuemntFromIFrame(frameRef: HTMLIFrameElement): HTMLDocument {
     ? frameRef.contentWindow.document
     : frameRef.contentDocument
 }
-getDocuemntFromIFrame(document.getElementById('leftFrame') as HTMLIFrameElement)
-  .querySelector('td[valign="bottom"][align="right"]')
-  .addEventListener('click', () => localStorage.clear())
+setTimeout(() => {
+  getDocuemntFromIFrame(
+    document.getElementById('leftFrame') as HTMLIFrameElement
+  )
+    .querySelector('td[valign="bottom"][align="right"]')
+    .addEventListener('click', () => localStorage.clear())
+}, 10000)
