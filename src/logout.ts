@@ -5,4 +5,4 @@ function getDocuemntFromIFrame(frameRef: HTMLIFrameElement): HTMLDocument {
 }
 getDocuemntFromIFrame(document.getElementById('leftFrame') as HTMLIFrameElement)
   .querySelector('td[valign="bottom"][align="right"]')
-  .addEventListener('click', localStorage.clear)
+  .addEventListener('click', () => localStorage.clear())
