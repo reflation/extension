@@ -1,4 +1,5 @@
 import { h, JSX } from 'preact'
+import classnames from 'classnames'
 import { User, Lock, Eye, EyeOff } from 'preact-feather'
 
 import { Input as OriginalInput } from '../../styles/components/Input'
@@ -17,20 +18,17 @@ const LoginOutside = styled.div<IsWrong & JSX.HTMLAttributes<HTMLDivElement>>`
   border: solid 1px ${props => (props.isWrong ? invaild.inside : '')};
 `
 
-const LeftIcon = css`
+const Icon = css`
   flex: 1;
   align-self: center;
   color: ${darken_medium};
 `
 
-const RightIcon = styled.span`
-  flex: 1;
-  align-self: center;
+const Pointer = css`
   cursor: pointer;
-  color: ${darken_medium};
 `
 
-const RightIconInner = css`
+const VerticalAlign = css`
   vertical-align: middle;
 `
 
@@ -42,7 +40,7 @@ const Input = styled(OriginalInput)`
 
 export const UsernameInput = ({ isWrong }: IsWrong) => (
   <LoginOutside isWrong={isWrong} style={{ marginBottom: 16 }}>
-    <User class={LeftIcon} />
+    <User class={Icon} />
     <Input autoFocus name="student_no" placeholder="학번 혹은 교수번호" />
   </LoginOutside>
 )
@@ -55,15 +53,15 @@ export const PasswordInput = ({ isWrong }: IsWrong) => {
     setInputType(inputType === 'password' ? 'text' : 'password')
   return (
     <LoginOutside isWrong={isWrong}>
-      <Lock class={LeftIcon} />
+      <Lock class={Icon} />
       <Input type={inputType} name="student_pw" placeholder="비밀번호" />
-      <RightIcon onClick={inverse}>
+      <span class={classnames(Icon, Pointer)} onClick={inverse}>
         {inputType === 'password' ? (
-          <Eye class={RightIconInner} />
+          <Eye class={VerticalAlign} />
         ) : (
-          <EyeOff class={RightIconInner} />
+          <EyeOff class={VerticalAlign} />
         )}
-      </RightIcon>
+      </span>
     </LoginOutside>
   )
 }
