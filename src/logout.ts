@@ -5,8 +5,10 @@ const getDocuemntFromIFrame = () =>
     ? leftFrame.contentWindow.document
     : leftFrame.contentDocument
 
-setTimeout(() => {
+const localStorageClear = () => localStorage.clear()
+
+leftFrame.onload = () => {
   getDocuemntFromIFrame()
     .querySelector('td[valign="bottom"][align="right"]')
-    .addEventListener('click', () => localStorage.clear())
-}, 10000)
+    .addEventListener('click', localStorageClear)
+}
