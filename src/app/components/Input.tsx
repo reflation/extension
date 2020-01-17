@@ -1,10 +1,11 @@
 import { h, JSX } from 'preact'
-import { User, Lock } from 'preact-feather'
+import { User, Lock, Eye, EyeOff } from 'preact-feather'
 
 import { Input as OriginalInput } from '../../styles/components/Input'
 import { darken_ultra, darken_medium, invaild } from '../../styles/colors'
-import { css } from 'linaria'
+import { css, cx } from 'linaria'
 import { styled } from 'linaria/react'
+import { useState } from 'preact/hooks'
 
 const LoginOutside = styled.div<IsWrong & JSX.HTMLAttributes<HTMLDivElement>>`
   display: flex;
@@ -22,10 +23,18 @@ const Icon = css`
   color: ${darken_medium};
 `
 
+const Pointer = css`
+  cursor: pointer;
+`
+
+const VerticalAlign = css`
+  vertical-align: middle;
+`
+
 type IsWrong = { isWrong: boolean }
 
 const Input = styled(OriginalInput)`
-  flex: 9;
+  flex: 8;
 `
 
 export const UsernameInput = ({ isWrong }: IsWrong) => (
@@ -35,9 +44,23 @@ export const UsernameInput = ({ isWrong }: IsWrong) => (
   </LoginOutside>
 )
 
-export const PasswordInput = ({ isWrong }: IsWrong) => (
-  <LoginOutside isWrong={isWrong}>
-    <Lock class={Icon} />
-    <Input type="password" name="student_pw" placeholder="비밀번호" />
-  </LoginOutside>
-)
+type InputType = 'password' | 'text'
+
+export const PasswordInput = ({ isWrong }: IsWrong) => {
+  const [inputType, setInputType] = useState<InputType>('password')
+  const reverse = () =>
+    setInputType(inputType === 'password' ? 'text' : 'password')
+  return (
+    <LoginOutside isWrong={isWrong}>
+      <Lock class={Icon} />
+      <Input type={inputType} name="student_pw" placeholder="비밀번호" />
+      <span class={cx(Icon, Pointer)} onClick={reverse}>
+        {inputType === 'password' ? (
+          <Eye class={VerticalAlign} />
+        ) : (
+          <EyeOff class={VerticalAlign} />
+        )}
+      </span>
+    </LoginOutside>
+  )
+}
