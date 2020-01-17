@@ -48,13 +48,13 @@ type InputType = 'password' | 'text'
 
 export const PasswordInput = ({ isWrong }: IsWrong) => {
   const [inputType, setInputType] = useState<InputType>('password')
-  const inverse = () =>
+  const reverse = () =>
     setInputType(inputType === 'password' ? 'text' : 'password')
   return (
     <LoginOutside isWrong={isWrong}>
       <Lock class={Icon} />
       <Input type={inputType} name="student_pw" placeholder="비밀번호" />
-      <span class={cx(Icon, Pointer)} onClick={inverse}>
+      <span class={cx(Icon, Pointer)} onClick={reverse}>
         {inputType === 'password' ? (
           <Eye class={VerticalAlign} />
         ) : (
