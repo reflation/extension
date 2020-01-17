@@ -1,10 +1,9 @@
 import { h, JSX } from 'preact'
-import classnames from 'classnames'
 import { User, Lock, Eye, EyeOff } from 'preact-feather'
 
 import { Input as OriginalInput } from '../../styles/components/Input'
 import { darken_ultra, darken_medium, invaild } from '../../styles/colors'
-import { css } from 'linaria'
+import { css, cx } from 'linaria'
 import { styled } from 'linaria/react'
 import { useState } from 'preact/hooks'
 
@@ -55,7 +54,7 @@ export const PasswordInput = ({ isWrong }: IsWrong) => {
     <LoginOutside isWrong={isWrong}>
       <Lock class={Icon} />
       <Input type={inputType} name="student_pw" placeholder="비밀번호" />
-      <span class={classnames(Icon, Pointer)} onClick={inverse}>
+      <span class={cx(Icon, Pointer)} onClick={inverse}>
         {inputType === 'password' ? (
           <Eye class={VerticalAlign} />
         ) : (
