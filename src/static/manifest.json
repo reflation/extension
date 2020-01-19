@@ -4,6 +4,11 @@
   "description": "Jeju National University ICT Enhancements",
   "manifest_version": 2,
   "author": "x86chi",
+  "icons": {
+    "12": "icon.png",
+    "48": "icon@3x.png",
+    "128": "icon@8x.png"
+  },
   "permissions": ["*://dreamy.jejunu.ac.kr/*", "webRequest", "cookies"],
   "content_scripts": [
     {
