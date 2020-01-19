@@ -17,4 +17,8 @@ export const Input = styled.input`
     color: ${black};
     font-family: '나눔스퀘어라운드', sans-serif;
   }
+
+  :-webkit-autofill {
+    transition: background-color 5000s ease-in-out 0s;
+  }
 `
