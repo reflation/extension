@@ -10,7 +10,7 @@ export default ({ optOutUrl }: { optOutUrl: string }) => (
     <OuterContainer>
       <InnerContainer>
         <Copyright>
-          <span> © 2019 reflation </span>
+          <span> © 2019-2020 reflation </span>
         </Copyright>
         <Contacts>
           <ViewOrginalPage>
@@ -19,8 +19,8 @@ export default ({ optOutUrl }: { optOutUrl: string }) => (
             </a>
           </ViewOrginalPage>
           <span>
-            <a href="https://github.com/reflation">
-              <Github {...Icon} /> github.com/reflation
+            <a href="https://github.com/reflation/extension">
+              <Github {...Icon} /> @reflation/extension
             </a>
           </span>
         </Contacts>
