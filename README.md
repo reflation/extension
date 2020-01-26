@@ -1,16 +1,11 @@
-# RE:flation
+# Reflation
+
+[![CircleCI](https://circleci.com/gh/reflation/extension.svg?style=svg)](https://circleci.com/gh/reflation/extension)
 
 A enhance UX browser extension for https://dreamy.jejunu.ac.kr
 
-## Features
+---
 
-### Login Page
+The UI of this extension was originally designed from [dimigo.in](https://dimigo.in).
 
-- view password
-- auto-login
-
-The UI of this page was originally designed from [dimigo.in](https://dimigo.in).
-
-## Lint & Type Check Status
-
-[![CircleCI](https://circleci.com/gh/reflation/extension.svg?style=svg)](https://circleci.com/gh/reflation/extension)
+_reflation_ is primarily distributed under the terms of the MIT license. See [LICENSE](./LICENSE) for details.
