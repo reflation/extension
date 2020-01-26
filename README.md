@@ -1,6 +1,7 @@
 # Reflation
 
 [![CircleCI](https://circleci.com/gh/reflation/extension.svg?style=svg)](https://circleci.com/gh/reflation/extension)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/cabhealjaalicokeompgoedhpnjdknfk?style=flat-square)](https://chrome.google.com/webstore/detail/cabhealjaalicokeompgoedhpnjdknfk)
 
 A enhance UX browser extension for https://dreamy.jejunu.ac.kr
 
