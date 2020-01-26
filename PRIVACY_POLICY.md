@@ -39,6 +39,6 @@
 
 | 메서드 | URL                                         | 요청 헤더                   |
 | ------ | ------------------------------------------- | --------------------------- |
-| GET    | `https://dreamy.jejunu.ac.kr/frame/main.do` | `Cookie: document.cookie }` |
+| GET    | `https://dreamy.jejunu.ac.kr/frame/main.do` | `{ Cookie: document.cookie }` |
 
 > [`src/utils/reconstruct.ts#L4-L13`](https://github.com/reflation/extension/blob/07a254/src/utils/reconstruct.ts#L4-L13)
