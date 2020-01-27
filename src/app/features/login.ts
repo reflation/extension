@@ -12,7 +12,7 @@ export const encodeAccount = ({ student_no, student_pw }: Account) => {
 
 export const formSubmit = async (input: FormData) => {
   const { data } = await axios.post<string>(
-    'https://dreamy.jejunu.ac.kr/frame/sysUser.do?next=',
+    'https://dreamy.jejunu.ac.kr/frame/sysUser.do',
     input,
     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
   )
