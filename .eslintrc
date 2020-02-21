@@ -19,7 +19,8 @@
   "env": {
     "node": true,
     "es6": true,
-    "browser": true
+    "browser": true,
+    "jest": true
   },
   "rules": {
     "indent": [2, 2, { "SwitchCase": 1 }],
