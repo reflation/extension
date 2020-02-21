@@ -27,6 +27,16 @@ commands:
       - run:
           name: Check syntax by eslint
           command: yarn lint
+  env:
+    steps:
+      - run:
+          name: Setup custom enviroment variables
+          command: echo 'export echo="Hello, Jest!"' >> $BASH_ENV
+  jest:
+    steps:
+      - run:
+          name: Run jest
+          command: yarn jest
   save-cache:
     steps:
       - save_cache:
@@ -39,10 +49,12 @@ commands:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}
+      - env
       - update-yarn
       - install
       - build
       - tsc
+      - jest
       - lint
       - save-cache
 jobs:
