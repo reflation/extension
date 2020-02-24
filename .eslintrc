@@ -29,6 +29,7 @@
     "no-use-before-define": "off",
     "camelcase": "off",
     "operator-linebreak": "off",
+    "space-before-function-paren": "off",
 
     "react/react-in-jsx-scope": "off",
     "react/display-name": "off",
