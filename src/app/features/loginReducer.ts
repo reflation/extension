@@ -9,7 +9,7 @@ export const [INVAILD, BLOCKED, KEEP, UNKEEP] = [
   'blocked',
   'keep',
   'unKeep',
-]
+] as const
 
 type State = { isWrong: Result; isKeepLogin: boolean }
 
