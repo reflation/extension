@@ -9,7 +9,12 @@ import {
   submitWhenKeepLogin,
 } from './features/localStorage'
 
-import useLoginReducer from './features/loginReducer'
+import useLoginReducer, {
+  INVAILD,
+  BLOCKED,
+  KEEP,
+  UNKEEP,
+} from './features/loginReducer'
 
 import { UsernameInput, PasswordInput } from './components/Input'
 import { WarningLabel } from './components/Label'
@@ -39,10 +44,10 @@ export default ({ optOutUrl }: OptOutUrl) => {
     } catch (err) {
       switch (err) {
         case Result.invalid:
-          dispatch('invalid')
+          dispatch(INVAILD)
           break
         case Result.blocked:
-          dispatch('blocked')
+          dispatch(BLOCKED)
           break
       }
       return
@@ -68,7 +73,7 @@ export default ({ optOutUrl }: OptOutUrl) => {
             <LabeledCheckbox
               value="로그인 유지"
               checked={isKeepLogin}
-              onChange={() => dispatch(!isKeepLogin ? 'keep' : 'unKeep')}
+              onChange={() => dispatch(!isKeepLogin ? KEEP : UNKEEP)}
             />
             <Submit />
           </Form>

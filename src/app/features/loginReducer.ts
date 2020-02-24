@@ -2,7 +2,14 @@ import { Result } from './login'
 import { useReducer } from 'preact/hooks'
 import { isKeepLoginEnabled } from './localStorage'
 
-export type Action = 'invalid' | 'blocked' | 'keep' | 'unKeep'
+export type Action = 'invaild' | 'blocked' | 'keep' | 'unKeep'
+
+export const [INVAILD, BLOCKED, KEEP, UNKEEP] = [
+  'invaild',
+  'blocked',
+  'keep',
+  'unKeep',
+]
 
 type State = { isWrong: Result; isKeepLogin: boolean }
 
@@ -18,13 +25,13 @@ const initialState: State = {
 
 const reducer = (state: State, action: Action) => {
   switch (action) {
-    case 'invalid':
+    case INVAILD:
       return { ...state, isWrong: Result.invalid }
-    case 'blocked':
+    case BLOCKED:
       return { ...state, isWrong: Result.blocked }
-    case 'keep':
+    case KEEP:
       return { ...state, isKeepLogin: true }
-    case 'unKeep':
+    case UNKEEP:
       return { ...state, isKeepLogin: false }
     default:
       throw new Error('Unexpected action')
