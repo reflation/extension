@@ -10,10 +10,9 @@ import {
 } from './features/localStorage'
 
 import useLoginReducer, {
-  INVAILD,
-  BLOCKED,
   KEEP,
   UNKEEP,
+  submitCreator,
 } from './features/loginReducer'
 
 import { UsernameInput, PasswordInput } from './components/Input'
@@ -25,35 +24,20 @@ import { Title } from '../styles/components/Title'
 import { Form } from '../styles/components/Input'
 import { LabeledCheckbox } from './components/Checkbox'
 
-import {
-  submitAndRedirect,
-  Result,
-  SubmitEvent,
-  TargetElements,
-  getElementValues,
-} from './features/login'
+import { Result, SubmitEvent, getElementValues } from './features/login'
 import Footer from './components/Footer'
 
 export default ({ optOutUrl }: OptOutUrl) => {
-  const { isWrong, isKeepLogin, dispatch } = useLoginReducer()
+  const {
+    state: { isWrong, isKeepLogin },
+    dispatch,
+  } = useLoginReducer()
 
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault()
-    try {
-      await requestFromTargetElements(e.target)
-    } catch (err) {
-      switch (err) {
-        case Result.invalid:
-          dispatch(INVAILD)
-          break
-        case Result.blocked:
-          dispatch(BLOCKED)
-          break
-      }
-      return
-    }
-
-    if (isKeepLogin) saveAccountInfo(getElementValues(e.target))
+    // @ts-ignore
+    dispatch(submitCreator(e.target))
+    if (!isWrong && isKeepLogin) saveAccountInfo(getElementValues(e.target))
   }
 
   useEffect(() => {
@@ -83,9 +67,6 @@ export default ({ optOutUrl }: OptOutUrl) => {
     </Fragment>
   )
 }
-
-const requestFromTargetElements = (target: TargetElements) =>
-  submitAndRedirect(getElementValues(target))
 
 const Main = styled.main`
   flex: 1 0 auto;

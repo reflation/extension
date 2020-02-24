@@ -40,6 +40,9 @@ export const getElementValues = (target: TargetElements) => {
   return { student_no, student_pw }
 }
 
+export const requestFromTargetElements = (target: TargetElements) =>
+  submitAndRedirect(getElementValues(target))
+
 const Exceed = '5회이상 로그인에 실패하여 10분간 로그인이 제한됩니다.'
 
 type ErrorMessage =
