@@ -35,7 +35,6 @@ export default ({ optOutUrl }: OptOutUrl) => {
 
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault()
-    // @ts-ignore
     dispatch(submitCreator(e.target))
     if (!isWrong && isKeepLogin) saveAccountInfo(getElementValues(e.target))
   }

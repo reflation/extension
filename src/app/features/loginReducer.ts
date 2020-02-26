@@ -3,6 +3,7 @@ import { useReducer } from 'preact/hooks'
 import { isKeepLoginEnabled } from './localStorage'
 
 type Action = 'invaild' | 'blocked' | 'keep' | 'unKeep'
+type ThunkAction = Action | ((action: ThunkAction) => void)
 
 const [INVAILD, BLOCKED] = ['invaild', 'blocked'] as const
 export const [KEEP, UNKEEP] = ['keep', 'unKeep'] as const
@@ -29,10 +30,9 @@ type State = { isWrong: Result; isKeepLogin: boolean }
 export default function useThunkReducer() {
   const [state, dispatch] = useReducer<State, Action>(reducer, initialState)
 
-  const enhancedDispatch = (action: Action | typeof dispatch) => {
+  const enhancedDispatch = (action: ThunkAction) => {
     if (typeof action === 'function') {
-      // @ts-ignore
-      action(dispatch)
+      action(enhancedDispatch)
     } else {
       dispatch(action)
     }
