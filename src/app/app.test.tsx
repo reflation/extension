@@ -1,7 +1,13 @@
-import 'dotenv/config'
+import { h } from 'preact'
 
-const { echo } = process.env
+import { mount } from 'enzyme'
 
-test('Hello, Jest!', () => {
-  expect(echo).toBe('Hello, Jest!')
+const Sample = () => <span>Hello</span>
+
+describe('Sample component', () => {
+  test('inner text is Hello', () => {
+    const renderd = mount(<Sample />)
+
+    expect(renderd.text()).toBe('Hello')
+  })
 })
