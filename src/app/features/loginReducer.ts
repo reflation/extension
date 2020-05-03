@@ -1,5 +1,5 @@
 import { Result, TargetElements, requestFromTargetElements } from './login'
-import { useReducer } from 'preact/hooks'
+import { useReducer } from 'react'
 import { isKeepLoginEnabled } from './localStorage'
 
 type Action = 'invaild' | 'blocked' | 'keep' | 'unKeep'
@@ -25,7 +25,7 @@ export const submitCreator = (payload: TargetElements) => async (
   }
 }
 
-type State = { isWrong: Result; isKeepLogin: boolean }
+export type State = { isWrong: Result; isKeepLogin: boolean }
 
 export default function useThunkReducer() {
   const [state, dispatch] = useReducer<State, Action>(reducer, initialState)
