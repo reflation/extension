@@ -2,12 +2,25 @@ import { h } from 'preact'
 
 import { mount } from 'enzyme'
 
-const Sample = () => <span>Hello</span>
+// cannot find @jest/globals:
+// jest.mock('./features/login')
+import useReducer, { State } from './features/loginReducer'
 
-describe('Sample component', () => {
-  test('inner text is Hello', () => {
-    const renderd = mount(<Sample />)
+import { Result } from './features/login'
 
-    expect(renderd.text()).toBe('Hello')
+describe('initial mounted login reducer', () => {
+  let _state: State
+
+  beforeEach(() => {
+    function Comp() {
+      const { state } = useReducer()
+      _state = state
+      return <main />
+    }
+    mount(<Comp />)
+  })
+
+  test('initial state check', () => {
+    expect(_state).toEqual({ isWrong: Result.clear, isKeepLogin: false })
   })
 })
