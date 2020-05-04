@@ -1,6 +1,6 @@
 import { h } from 'preact'
 
-import { mount } from 'enzyme'
+import { render } from '@testing-library/preact'
 
 jest.mock('./features/login')
 
@@ -32,7 +32,7 @@ describe('initial mounted login reducer', () => {
       _dispatch = dispatch
       return <main />
     }
-    mount(<Comp />)
+    render(<Comp />)
   })
 
   test('Enter correct student account', async done => {
