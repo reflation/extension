@@ -1,19 +1,32 @@
-import * as login from '../login'
+import {
+  encodeAccount,
+  getElementValues,
+  Account,
+  Result,
+  TargetElements,
+  SubmitEvent,
+} from '../login.common'
 
 import 'dotenv/config'
-
 const { expectUsername, expectPassword } = process.env
 
-const encode = window.atob
+export const submitAndRedirect = async (props: Account) => {
+  await formSubmit(encodeAccount(props))
+}
+
+export const requestFromTargetElements = (target: TargetElements) =>
+  submitAndRedirect(getElementValues(target))
 
 const wrongCount = {
   count: 0,
   currentUsername: expectUsername,
 }
 
+const decode = window.atob
+
 const formSubmit = async (input: FormData) => {
-  const student_no = encode(input.get('tmpu').toString())
-  const student_pw = encode(input.get('tmpu').toString())
+  const student_no = decode(input.get('tmpu').toString())
+  const student_pw = decode(input.get('tmpw').toString())
   if (student_no === expectUsername && student_pw === expectPassword) return
 
   if (wrongCount.currentUsername === student_no) {
@@ -23,7 +36,7 @@ const formSubmit = async (input: FormData) => {
     wrongCount.count += 1
   }
 
-  throw wrongCount.count < 5 ? login.Result.invalid : login.Result.blocked
+  throw wrongCount.count < 5 ? Result.invalid : Result.blocked
 }
 
-export default { ...login, formSubmit }
+export { getElementValues, Account, Result, TargetElements, SubmitEvent }
