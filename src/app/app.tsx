@@ -24,19 +24,23 @@ import { Title } from '../styles/components/Title'
 import { Form } from '../styles/components/Input'
 import { LabeledCheckbox } from './components/Checkbox'
 
-import { Result, SubmitEvent, getElementValues } from './features/login'
+import { Status, SubmitEvent, getElementValues } from './features/login'
 import Footer from './components/Footer'
 
 export default ({ optOutUrl }: OptOutUrl) => {
   const {
-    state: { isWrong, isKeepLogin },
+    state: { status, isKeepLogin },
     dispatch,
   } = useLoginReducer()
+
+  const isWrong = [Status.invalid, Status.blocked].includes(status)
 
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault()
     dispatch(submitCreator(e.target))
-    if (!isWrong && isKeepLogin) saveAccountInfo(getElementValues(e.target))
+    if (status === Status.correct && isKeepLogin) {
+      saveAccountInfo(getElementValues(e.target))
+    }
   }
 
   useEffect(() => {
@@ -50,9 +54,9 @@ export default ({ optOutUrl }: OptOutUrl) => {
         <Card>
           <Title>로그인</Title>
           <Form onSubmit={handleSubmit}>
-            {isWrong === Result.blocked && <WarningLabel />}
-            <UsernameInput isWrong={isWrong !== Result.clear} />
-            <PasswordInput isWrong={isWrong !== Result.clear} />
+            {status === Status.blocked && <WarningLabel />}
+            <UsernameInput isWrong={isWrong} />
+            <PasswordInput isWrong={isWrong} />
             <LabeledCheckbox
               value="로그인 유지"
               checked={isKeepLogin}

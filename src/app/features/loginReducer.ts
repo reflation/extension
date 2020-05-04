@@ -1,11 +1,11 @@
-import { Result, TargetElements, requestFromTargetElements } from './login'
+import { Status, TargetElements, requestFromTargetElements } from './login'
 import { useReducer } from 'react'
 import { isKeepLoginEnabled } from './localStorage'
 
-type Action = 'invaild' | 'blocked' | 'keep' | 'unKeep'
-type ThunkAction = Action | ((action: ThunkAction) => void)
+type Action = 'correct' | 'invaild' | 'blocked' | 'keep' | 'unKeep'
+export type ThunkAction = Action | ((action: ThunkAction) => void)
 
-const [INVAILD, BLOCKED] = ['invaild', 'blocked'] as const
+const [CORRECT, INVAILD, BLOCKED] = ['correct', 'invaild', 'blocked'] as const
 export const [KEEP, UNKEEP] = ['keep', 'unKeep'] as const
 
 export const submitCreator = (payload: TargetElements) => async (
@@ -13,19 +13,20 @@ export const submitCreator = (payload: TargetElements) => async (
 ) => {
   try {
     await requestFromTargetElements(payload)
+    dispatch(CORRECT)
   } catch (err) {
     switch (err) {
-      case Result.invalid:
+      case Status.invalid:
         dispatch(INVAILD)
         break
-      case Result.blocked:
+      case Status.blocked:
         dispatch(BLOCKED)
         break
     }
   }
 }
 
-export type State = { isWrong: Result; isKeepLogin: boolean }
+export type State = { status: Status; isKeepLogin: boolean }
 
 export default function useThunkReducer() {
   const [state, dispatch] = useReducer<State, Action>(reducer, initialState)
@@ -41,16 +42,18 @@ export default function useThunkReducer() {
 }
 
 const initialState: State = {
-  isWrong: Result.clear,
+  status: Status.idle,
   isKeepLogin: isKeepLoginEnabled(),
 }
 
 const reducer = (state: State, action: Action) => {
   switch (action) {
+    case CORRECT:
+      return { ...state, status: Status.correct }
     case INVAILD:
-      return { ...state, isWrong: Result.invalid }
+      return { ...state, status: Status.invalid }
     case BLOCKED:
-      return { ...state, isWrong: Result.blocked }
+      return { ...state, status: Status.blocked }
     case KEEP:
       return { ...state, isKeepLogin: true }
     case UNKEEP:
