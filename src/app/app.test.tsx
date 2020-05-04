@@ -2,8 +2,8 @@ import { h } from 'preact'
 
 import { mount } from 'enzyme'
 
-// cannot find @jest/globals:
-// jest.mock('./features/login')
+jest.mock('./features/login')
+
 import useReducer, { State } from './features/loginReducer'
 
 import { Result } from './features/login'

@@ -1,14 +1,12 @@
-import { JSX } from 'preact'
-
 import axios from 'axios'
-import { base64 } from '../../utils/encoder'
-
-export const encodeAccount = ({ student_no, student_pw }: Account) => {
-  const formDataEncoded = new FormData()
-  formDataEncoded.append('tmpu', base64(student_no))
-  formDataEncoded.append('tmpw', base64(student_pw))
-  return formDataEncoded
-}
+import {
+  encodeAccount,
+  getElementValues,
+  Account,
+  Result,
+  TargetElements,
+  SubmitEvent,
+} from './login.common'
 
 export const formSubmit = async (input: FormData) => {
   const { data } = await axios.post<string>(
@@ -30,16 +28,6 @@ export const submitAndRedirect = async (props: Account) => {
   await formSubmit(encodeAccount(props))
   location.href = 'main.do'
 }
-
-export const getElementValues = (target: TargetElements) => {
-  const {
-    student_no: { value: student_no },
-    student_pw: { value: student_pw },
-  } = target
-
-  return { student_no, student_pw }
-}
-
 export const requestFromTargetElements = (target: TargetElements) =>
   submitAndRedirect(getElementValues(target))
 
@@ -53,19 +41,4 @@ type ErrorMessage =
   | '아이디 또는 비밀번호를 확인하세요. 5회이상 로그인에 실패한 경우 10분간 로그인이 제한됩니다.(5회 실패)'
   | '5회이상 로그인에 실패하여 10분간 로그인이 제한됩니다.'
 
-export type Account = { student_no: string; student_pw: string }
-
-export enum Result {
-  'clear',
-  'invalid',
-  'blocked',
-}
-
-export interface TargetElements extends EventTarget {
-  student_no: HTMLInputElement
-  student_pw: HTMLInputElement
-}
-
-export interface SubmitEvent extends JSX.TargetedEvent<HTMLFormElement, Event> {
-  target: TargetElements
-}
+export { getElementValues, Account, Result, TargetElements, SubmitEvent }
