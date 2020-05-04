@@ -11,5 +11,4 @@ module.exports = {
     '^react-dom/test-utils$': 'preact/test-utils',
     '^react-dom$': 'preact/compat',
   },
-  setupFilesAfterEnv: ['<rootDir>src/setupTests.ts'],
 }
