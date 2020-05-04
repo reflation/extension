@@ -19,8 +19,9 @@ export const getElementValues = (target: TargetElements) => {
 
 export type Account = { student_no: string; student_pw: string }
 
-export enum Result {
-  'clear',
+export enum Status {
+  'idle',
+  'correct',
   'invalid',
   'blocked',
 }

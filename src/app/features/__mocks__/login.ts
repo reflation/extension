@@ -2,7 +2,7 @@ import {
   encodeAccount,
   getElementValues,
   Account,
-  Result,
+  Status,
   TargetElements,
   SubmitEvent,
 } from '../login.common'
@@ -36,7 +36,7 @@ const formSubmit = async (input: FormData) => {
     wrongCount.count += 1
   }
 
-  throw wrongCount.count < 5 ? Result.invalid : Result.blocked
+  throw wrongCount.count < 5 ? Status.invalid : Status.blocked
 }
 
-export { getElementValues, Account, Result, TargetElements, SubmitEvent }
+export { getElementValues, Account, Status, TargetElements, SubmitEvent }
