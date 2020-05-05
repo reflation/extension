@@ -1,11 +1,9 @@
 import { JSX } from 'preact'
 
-import { base64 } from '../../utils/encoder'
-
 export const encodeAccount = ({ student_no, student_pw }: Account) => {
   const formDataEncoded = new FormData()
-  formDataEncoded.append('tmpu', base64(student_no))
-  formDataEncoded.append('tmpw', base64(student_pw))
+  formDataEncoded.append('tmpu', btoa(student_no))
+  formDataEncoded.append('tmpw', btoa(student_pw))
   return formDataEncoded
 }
 export const getElementValues = (target: TargetElements) => {
