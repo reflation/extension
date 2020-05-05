@@ -1,5 +1,5 @@
 import { Status, TargetElements, requestFromTargetElements } from './login'
-import { useReducer } from 'react'
+import { useReducer } from 'preact/hooks'
 import { isKeepLoginEnabled } from './localStorage'
 
 type Action = 'correct' | 'invaild' | 'blocked' | 'keep' | 'unKeep'
