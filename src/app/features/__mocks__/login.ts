@@ -7,6 +7,8 @@ import {
   SubmitEvent,
 } from '../login.common'
 
+import { decode } from '../../../utils/base64'
+
 import 'dotenv/config'
 const { expectUsername, expectPassword } = process.env
 
@@ -21,8 +23,6 @@ const wrongCount = {
   count: 0,
   currentUsername: expectUsername,
 }
-
-const decode = window.atob
 
 const formSubmit = async (input: FormData) => {
   const student_no = decode(input.get('tmpu').toString())
