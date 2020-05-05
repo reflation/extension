@@ -2,11 +2,13 @@ import { Status, TargetElements, requestFromTargetElements } from './login'
 import { useReducer } from 'preact/hooks'
 import { isKeepLoginEnabled } from './localStorage'
 
-type Action = 'correct' | 'invaild' | 'blocked' | 'keep' | 'unKeep'
+const ACTIONS = ['correct', 'invaild', 'blocked', 'keep', 'unKeep'] as const
+const [CORRECT, INVAILD, BLOCKED, KEEP, UNKEEP] = ACTIONS
+
+type Action = typeof ACTIONS[number]
 export type ThunkAction = Action | ((action: ThunkAction) => void)
 
-const [CORRECT, INVAILD, BLOCKED] = ['correct', 'invaild', 'blocked'] as const
-export const [KEEP, UNKEEP] = ['keep', 'unKeep'] as const
+export { KEEP, UNKEEP }
 
 export const submitCreator = (payload: TargetElements) => async (
   dispatch: (action: Action) => void
