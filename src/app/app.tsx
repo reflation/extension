@@ -33,7 +33,7 @@ export default ({ optOutUrl }: OptOutUrl) => {
     dispatch,
   } = useLoginReducer()
 
-  const isWrong = [Status.invalid, Status.blocked].includes(status)
+  const isWrong = status === Status.invalid || status === Status.blocked
 
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault()
