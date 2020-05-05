@@ -22,11 +22,9 @@ const wrongCount = {
   currentUsername: expectUsername,
 }
 
-const decode = window.atob
-
 const formSubmit = async (input: FormData) => {
-  const student_no = decode(input.get('tmpu').toString())
-  const student_pw = decode(input.get('tmpw').toString())
+  const student_no = atob(input.get('tmpu').toString())
+  const student_pw = atob(input.get('tmpw').toString())
   if (student_no === expectUsername && student_pw === expectPassword) return
 
   if (wrongCount.currentUsername === student_no) {
