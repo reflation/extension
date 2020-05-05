@@ -30,7 +30,7 @@ describe('initial mounted login reducer', () => {
       const { state, dispatch } = useReducer()
       _state = state
       _dispatch = dispatch
-      return <main />
+      return <div />
     }
     render(<Comp />)
   })
