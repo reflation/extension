@@ -1,6 +1,7 @@
 import {
-  encodeAccount,
   getElementValues,
+  submitWrapper,
+  FormSubmit,
   Account,
   Status,
   TargetElements,
@@ -9,20 +10,12 @@ import {
 
 import 'dotenv/config'
 const { expectUsername, expectPassword } = process.env
-
-export const submitAndRedirect = async (props: Account) => {
-  await formSubmit(encodeAccount(props))
-}
-
-export const requestFromTargetElements = (target: TargetElements) =>
-  submitAndRedirect(getElementValues(target))
-
 const wrongCount = {
   count: 0,
   currentUsername: expectUsername,
 }
 
-const formSubmit = async (input: FormData) => {
+const formSubmit: FormSubmit = async (input: FormData) => {
   const student_no = atob(input.get('tmpu').toString())
   const student_pw = atob(input.get('tmpw').toString())
   if (student_no === expectUsername && student_pw === expectPassword) return
@@ -36,5 +29,10 @@ const formSubmit = async (input: FormData) => {
 
   throw wrongCount.count < 5 ? Status.invalid : Status.blocked
 }
+
+export const submitter = submitWrapper(formSubmit)
+
+export const requestFromTargetElements = (target: TargetElements) =>
+  submitter(getElementValues(target))
 
 export { getElementValues, Account, Status, TargetElements, SubmitEvent }

@@ -38,8 +38,11 @@ export default ({ optOutUrl }: OptOutUrl) => {
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault()
     dispatch(submitCreator(e.target))
-    if (status === Status.correct && isKeepLogin) {
-      saveAccountInfo(getElementValues(e.target))
+    if (status === Status.correct) {
+      if (isKeepLogin) {
+        saveAccountInfo(getElementValues(e.target))
+      }
+      location.href = 'main.do'
     }
   }
 

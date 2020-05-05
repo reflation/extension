@@ -1,14 +1,15 @@
 import axios from 'axios'
 import {
-  encodeAccount,
   getElementValues,
+  submitWrapper,
+  FormSubmit,
   Account,
   Status,
   TargetElements,
   SubmitEvent,
 } from './login.common'
 
-export const formSubmit = async (input: FormData) => {
+export const formSubmit: FormSubmit = async (input: FormData) => {
   const { data } = await axios.post<string>(
     'https://dreamy.jejunu.ac.kr/frame/sysUser.do',
     input,
@@ -24,12 +25,10 @@ export const formSubmit = async (input: FormData) => {
   }
 }
 
-export const submitAndRedirect = async (props: Account) => {
-  await formSubmit(encodeAccount(props))
-  location.href = 'main.do'
-}
+export const submitter = submitWrapper(formSubmit)
+
 export const requestFromTargetElements = (target: TargetElements) =>
-  submitAndRedirect(getElementValues(target))
+  submitter(getElementValues(target))
 
 const Exceed = '5회이상 로그인에 실패하여 10분간 로그인이 제한됩니다.'
 

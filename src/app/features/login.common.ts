@@ -1,6 +1,6 @@
 import { JSX } from 'preact'
 
-export const encodeAccount = ({ student_no, student_pw }: Account) => {
+const encodeAccount = ({ student_no, student_pw }: Account) => {
   const formDataEncoded = new FormData()
   formDataEncoded.append('tmpu', btoa(student_no))
   formDataEncoded.append('tmpw', btoa(student_pw))
@@ -14,6 +14,11 @@ export const getElementValues = (target: TargetElements) => {
 
   return { student_no, student_pw }
 }
+
+export const submitWrapper = (formSubmit: FormSubmit) => (props: Account) =>
+  formSubmit(encodeAccount(props))
+
+export type FormSubmit = (input: FormData) => Promise<void>
 
 export type Account = { student_no: string; student_pw: string }
 
