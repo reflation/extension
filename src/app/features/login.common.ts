@@ -18,11 +18,11 @@ export const getElementValues = (target: TargetElements) => {
 export const submitWrapper = (formSubmit: FormSubmit) => (props: Account) =>
   formSubmit(encodeAccount(props))
 
-export type FormSubmit = (input: FormData) => Promise<Status>
+export type FormSubmit = (input: FormData) => Promise<Result>
 
 export type Account = { student_no: string; student_pw: string }
 
-export enum Status {
+export enum Result {
   'idle',
   'correct',
   'invalid',

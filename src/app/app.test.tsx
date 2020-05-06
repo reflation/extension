@@ -10,7 +10,7 @@ import useReducer, {
   ThunkAction,
 } from './features/loginReducer'
 
-import { Status, TargetElements } from './features/login'
+import { Result, TargetElements } from './features/login'
 
 import 'dotenv/config'
 const { expectUsername, expectPassword } = process.env
@@ -41,7 +41,7 @@ describe('initial mounted login reducer', () => {
       expectPassword
     )
     await submitCreator(correctStudentAccount)(_dispatch)
-    expect(_state).toEqual({ status: Status.correct, isKeepLogin: false })
+    expect(_state).toEqual({ result: Result.correct, isKeepLogin: false })
     done()
   })
   describe('Enter incorrect student account', () => {
@@ -51,7 +51,7 @@ describe('initial mounted login reducer', () => {
     )
     test('once wrong', async done => {
       await submitCreator(incorrectStudentAccount)(_dispatch)
-      expect(_state).toEqual({ status: Status.invalid, isKeepLogin: false })
+      expect(_state).toEqual({ result: Result.invalid, isKeepLogin: false })
       done()
     })
     test('Login was blocked because it was wrong 5 times', async done => {
@@ -65,7 +65,7 @@ describe('initial mounted login reducer', () => {
       await submitCreator(incorrectStudentAccount)(_dispatch)
       await submitCreator(incorrectStudentAccount)(_dispatch)
       await submitCreator(incorrectStudentAccount)(_dispatch)
-      expect(_state).toEqual({ status: Status.blocked, isKeepLogin: false })
+      expect(_state).toEqual({ result: Result.blocked, isKeepLogin: false })
       done()
     })
   })

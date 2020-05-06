@@ -3,7 +3,7 @@ import {
   submitWrapper,
   FormSubmit,
   Account,
-  Status,
+  Result,
   TargetElements,
   SubmitEvent,
 } from '../login.common'
@@ -19,7 +19,7 @@ const formSubmit: FormSubmit = async (input: FormData) => {
   const student_no = atob(input.get('tmpu').toString())
   const student_pw = atob(input.get('tmpw').toString())
   if (student_no === expectUsername && student_pw === expectPassword) {
-    return Status.correct
+    return Result.correct
   }
 
   if (wrongCount.currentUsername === student_no) {
@@ -29,7 +29,7 @@ const formSubmit: FormSubmit = async (input: FormData) => {
     wrongCount.count += 1
   }
 
-  return wrongCount.count < 5 ? Status.invalid : Status.blocked
+  return wrongCount.count < 5 ? Result.invalid : Result.blocked
 }
 
 export const submitter = submitWrapper(formSubmit)
@@ -37,4 +37,4 @@ export const submitter = submitWrapper(formSubmit)
 export const requestFromTargetElements = (target: TargetElements) =>
   submitter(getElementValues(target))
 
-export { getElementValues, Account, Status, TargetElements, SubmitEvent }
+export { getElementValues, Account, Result, TargetElements, SubmitEvent }
