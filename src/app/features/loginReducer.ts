@@ -2,29 +2,27 @@ import { Status, TargetElements, requestFromTargetElements } from './login'
 import { useReducer } from 'preact/hooks'
 import { isKeepLoginEnabled } from './localStorage'
 
-const ACTIONS = ['correct', 'invaild', 'blocked', 'keep', 'unKeep'] as const
-const [CORRECT, INVAILD, BLOCKED, KEEP, UNKEEP] = ACTIONS
+type Action =
+  | { type: 'STATUS'; payload: Status }
+  | { type: 'KEEP'; payload: boolean }
 
-type Action = typeof ACTIONS[number]
 export type ThunkAction = Action | ((action: ThunkAction) => void)
 
-export { KEEP, UNKEEP }
+const statusCreator = (status: Status): Action => ({
+  type: 'STATUS',
+  payload: status,
+})
+
+export const keepCreator = (isKeep: boolean): Action => ({
+  type: 'KEEP',
+  payload: isKeep,
+})
 
 export const submitCreator = (payload: TargetElements) => async (
   dispatch: (action: Action) => void
 ) => {
   const status = await requestFromTargetElements(payload)
-  switch (status) {
-    case Status.correct:
-      dispatch(CORRECT)
-      break
-    case Status.invalid:
-      dispatch(INVAILD)
-      break
-    case Status.blocked:
-      dispatch(BLOCKED)
-      break
-  }
+  dispatch(statusCreator(status))
 }
 
 export type State = { status: Status; isKeepLogin: boolean }
@@ -48,17 +46,11 @@ const initialState: State = {
 }
 
 const reducer = (state: State, action: Action) => {
-  switch (action) {
-    case CORRECT:
-      return { ...state, status: Status.correct }
-    case INVAILD:
-      return { ...state, status: Status.invalid }
-    case BLOCKED:
-      return { ...state, status: Status.blocked }
-    case KEEP:
-      return { ...state, isKeepLogin: true }
-    case UNKEEP:
-      return { ...state, isKeepLogin: false }
+  switch (action.type) {
+    case 'STATUS':
+      return { ...state, status: action.payload }
+    case 'KEEP':
+      return { ...state, isKeepLogin: action.payload }
     default:
       throw new Error('Unexpected action')
   }

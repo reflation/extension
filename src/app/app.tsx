@@ -10,9 +10,8 @@ import {
 } from './features/localStorage'
 
 import useLoginReducer, {
-  KEEP,
-  UNKEEP,
   submitCreator,
+  keepCreator,
 } from './features/loginReducer'
 
 import { UsernameInput, PasswordInput } from './components/Input'
@@ -63,7 +62,7 @@ export default ({ optOutUrl }: OptOutUrl) => {
             <LabeledCheckbox
               value="로그인 유지"
               checked={isKeepLogin}
-              onChange={() => dispatch(!isKeepLogin ? KEEP : UNKEEP)}
+              onChange={() => dispatch(keepCreator(!isKeepLogin))}
             />
             <Submit />
           </Form>
