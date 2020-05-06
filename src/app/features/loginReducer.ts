@@ -17,6 +17,7 @@ export const submitCreator = (payload: TargetElements) => async (
   switch (status) {
     case Status.correct:
       dispatch(CORRECT)
+      break
     case Status.invalid:
       dispatch(INVAILD)
       break
