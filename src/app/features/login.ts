@@ -4,7 +4,7 @@ import {
   submitWrapper,
   FormSubmit,
   Account,
-  Status,
+  Result,
   TargetElements,
   SubmitEvent,
 } from './login.common'
@@ -21,9 +21,9 @@ export const formSubmit: FormSubmit = async (input: FormData) => {
       .match(/var dbError = "(?:\.|(\\\")|[^\""\n])*"/)[0]
       .slice(15, -1) as ErrorMessage
 
-    return invaildMessage === Exceed ? Status.blocked : Status.invalid
+    return invaildMessage === Exceed ? Result.blocked : Result.invalid
   }
-  return Status.correct
+  return Result.correct
 }
 
 export const submitter = submitWrapper(formSubmit)
@@ -41,4 +41,4 @@ type ErrorMessage =
   | '아이디 또는 비밀번호를 확인하세요. 5회이상 로그인에 실패한 경우 10분간 로그인이 제한됩니다.(5회 실패)'
   | '5회이상 로그인에 실패하여 10분간 로그인이 제한됩니다.'
 
-export { getElementValues, Account, Status, TargetElements, SubmitEvent }
+export { getElementValues, Account, Result, TargetElements, SubmitEvent }

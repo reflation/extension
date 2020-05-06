@@ -23,21 +23,21 @@ import { Title } from '../styles/components/Title'
 import { Form } from '../styles/components/Input'
 import { LabeledCheckbox } from './components/Checkbox'
 
-import { Status, SubmitEvent, getElementValues } from './features/login'
+import { Result, SubmitEvent, getElementValues } from './features/login'
 import Footer from './components/Footer'
 
 export default ({ optOutUrl }: OptOutUrl) => {
   const {
-    state: { status, isKeepLogin },
+    state: { result, isKeepLogin },
     dispatch,
   } = useLoginReducer()
 
-  const isWrong = status === Status.invalid || status === Status.blocked
+  const isWrong = result === Result.invalid || result === Result.blocked
 
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault()
     dispatch(submitCreator(e.target))
-    if (status === Status.correct) {
+    if (result === Result.correct) {
       if (isKeepLogin) {
         saveAccountInfo(getElementValues(e.target))
       }
@@ -56,7 +56,7 @@ export default ({ optOutUrl }: OptOutUrl) => {
         <Card>
           <Title>로그인</Title>
           <Form onSubmit={handleSubmit}>
-            {status === Status.blocked && <WarningLabel />}
+            {result === Result.blocked && <WarningLabel />}
             <UsernameInput isWrong={isWrong} />
             <PasswordInput isWrong={isWrong} />
             <LabeledCheckbox
