@@ -18,7 +18,9 @@ const wrongCount = {
 const formSubmit: FormSubmit = async (input: FormData) => {
   const student_no = atob(input.get('tmpu').toString())
   const student_pw = atob(input.get('tmpw').toString())
-  if (student_no === expectUsername && student_pw === expectPassword) return
+  if (student_no === expectUsername && student_pw === expectPassword) {
+    return Status.correct
+  }
 
   if (wrongCount.currentUsername === student_no) {
     wrongCount.count += 1
@@ -27,7 +29,7 @@ const formSubmit: FormSubmit = async (input: FormData) => {
     wrongCount.count += 1
   }
 
-  throw wrongCount.count < 5 ? Status.invalid : Status.blocked
+  return wrongCount.count < 5 ? Status.invalid : Status.blocked
 }
 
 export const submitter = submitWrapper(formSubmit)

@@ -18,7 +18,7 @@ export const getElementValues = (target: TargetElements) => {
 export const submitWrapper = (formSubmit: FormSubmit) => (props: Account) =>
   formSubmit(encodeAccount(props))
 
-export type FormSubmit = (input: FormData) => Promise<void>
+export type FormSubmit = (input: FormData) => Promise<Status>
 
 export type Account = { student_no: string; student_pw: string }
 

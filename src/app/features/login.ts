@@ -21,8 +21,9 @@ export const formSubmit: FormSubmit = async (input: FormData) => {
       .match(/var dbError = "(?:\.|(\\\")|[^\""\n])*"/)[0]
       .slice(15, -1) as ErrorMessage
 
-    throw invaildMessage === Exceed ? Status.blocked : Status.invalid
+    return invaildMessage === Exceed ? Status.blocked : Status.invalid
   }
+  return Status.correct
 }
 
 export const submitter = submitWrapper(formSubmit)
