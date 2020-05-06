@@ -13,18 +13,17 @@ export { KEEP, UNKEEP }
 export const submitCreator = (payload: TargetElements) => async (
   dispatch: (action: Action) => void
 ) => {
-  try {
-    await requestFromTargetElements(payload)
-    dispatch(CORRECT)
-  } catch (err) {
-    switch (err) {
-      case Status.invalid:
-        dispatch(INVAILD)
-        break
-      case Status.blocked:
-        dispatch(BLOCKED)
-        break
-    }
+  const status = await requestFromTargetElements(payload)
+  switch (status) {
+    case Status.correct:
+      dispatch(CORRECT)
+      break
+    case Status.invalid:
+      dispatch(INVAILD)
+      break
+    case Status.blocked:
+      dispatch(BLOCKED)
+      break
   }
 }
 
