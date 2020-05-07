@@ -4,7 +4,7 @@ import { isKeepLoginEnabled } from './localStorage'
 
 const [RESULT, KEEP] = ['RESULT', 'KEEP'] as const
 
-type Action<Type extends string, Payload> = {
+interface Action<Type extends string, Payload> {
   type: Type
   payload: Payload
 }
@@ -30,7 +30,10 @@ export const submitCreator = (payload: TargetElements) => async (
   dispatch(resultCreator(result))
 }
 
-export type State = { result: Result; isKeepLogin: boolean }
+export interface State {
+  result: Result
+  isKeepLogin: boolean
+}
 
 export default function useThunkReducer() {
   const [state, dispatch] = useReducer<State, Actions>(reducer, initialState)
