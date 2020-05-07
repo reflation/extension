@@ -2,24 +2,29 @@ import { Result, TargetElements, requestFromTargetElements } from './login'
 import { useReducer } from 'preact/hooks'
 import { isKeepLoginEnabled } from './localStorage'
 
-type Action =
-  | { type: 'RESULT'; payload: Result }
-  | { type: 'KEEP'; payload: boolean }
+const [RESULT, KEEP] = ['RESULT', 'KEEP'] as const
 
-export type ThunkAction = Action | ((action: ThunkAction) => void)
+type Action<Type extends string, Payload> = {
+  type: Type
+  payload: Payload
+}
 
-const resultCreator = (result: Result): Action => ({
+type Actions = Action<typeof RESULT, Result> | Action<typeof KEEP, boolean>
+
+export type ThunkAction = Actions | ((action: ThunkAction) => void)
+
+const resultCreator = (result: Result): Actions => ({
   type: 'RESULT',
   payload: result,
 })
 
-export const keepCreator = (isKeep: boolean): Action => ({
+export const keepCreator = (isKeep: boolean): Actions => ({
   type: 'KEEP',
   payload: isKeep,
 })
 
 export const submitCreator = (payload: TargetElements) => async (
-  dispatch: (action: Action) => void
+  dispatch: (action: Actions) => void
 ) => {
   const result = await requestFromTargetElements(payload)
   dispatch(resultCreator(result))
@@ -28,7 +33,7 @@ export const submitCreator = (payload: TargetElements) => async (
 export type State = { result: Result; isKeepLogin: boolean }
 
 export default function useThunkReducer() {
-  const [state, dispatch] = useReducer<State, Action>(reducer, initialState)
+  const [state, dispatch] = useReducer<State, Actions>(reducer, initialState)
 
   const enhancedDispatch = (action: ThunkAction) => {
     if (typeof action === 'function') {
@@ -45,7 +50,7 @@ const initialState: State = {
   isKeepLogin: isKeepLoginEnabled(),
 }
 
-const reducer = (state: State, action: Action) => {
+const reducer = (state: State, action: Actions) => {
   switch (action.type) {
     case 'RESULT':
       return { ...state, result: action.payload }
