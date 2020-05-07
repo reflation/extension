@@ -5,7 +5,6 @@ const TerserJSPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const CleanCSSPlugin = require('less-plugin-clean-css')
 const path = require('path')
 
 module.exports = (env, args) => {
