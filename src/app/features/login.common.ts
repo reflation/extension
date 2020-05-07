@@ -20,7 +20,10 @@ export const submitWrapper = (formSubmit: FormSubmit) => (props: Account) =>
 
 export type FormSubmit = (input: FormData) => Promise<Result>
 
-export type Account = { student_no: string; student_pw: string }
+export interface Account {
+  student_no: string
+  student_pw: string
+}
 
 export enum Result {
   'idle',
