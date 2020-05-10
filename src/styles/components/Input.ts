@@ -5,7 +5,7 @@ export const Form = styled.form`
   display: flex;
   width: 100%;
   flex-direction: column;
-  margin-top: 93px;
+  margin-top: 61px;
 `
 
 export const Input = styled.input`
