@@ -33,7 +33,7 @@ const openFindPassword = () => {
   open('/frame/sysUserPwdSearch.do', '_blank', 'width=475, height=300')
 }
 
-export const FindPassword = (
+export const FindPassword = () => (
   <CenterLabel>
     또는 <Link onClick={openFindPassword}>비밀번호 찾기</Link>
   </CenterLabel>

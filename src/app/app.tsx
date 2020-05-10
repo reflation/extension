@@ -70,7 +70,7 @@ export default ({ optOutUrl }: OptOutUrl) => {
               onChange={() => dispatch(keepCreator(!isKeepLogin))}
             />
             <Submit />
-            {FindPassword}
+            <FindPassword />
           </Form>
         </Card>
       </Main>
