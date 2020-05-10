@@ -37,7 +37,7 @@ interface IsWrong {
 }
 
 interface InputProps extends IsWrong {
-  onChange: () => void
+  onChange: JSX.GenericEventHandler<HTMLInputElement>
 }
 
 const Input = styled(OriginalInput)`
