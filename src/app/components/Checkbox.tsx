@@ -72,14 +72,22 @@ const Input = styled.input`
   }
 `
 
+interface CheckboxProps {
+  onChange: JSX.GenericEventHandler<HTMLInputElement>
+  checked: boolean
+}
+
+interface LabeledCheckboxProps extends CheckboxProps {
+  value: string
+}
+
 const Checkbox = (props: CheckboxProps) => (
   <Label>
     <Input {...props} type="checkbox" />
     <Checkmark />
   </Label>
 )
-
-export default function LabeledCheckbox(props: LabeledCheckboxProp) {
+export default function LabeledCheckbox(props: LabeledCheckboxProps) {
   const { value, ...fowardedProps } = props
   return (
     <Wrap>
@@ -87,13 +95,4 @@ export default function LabeledCheckbox(props: LabeledCheckboxProp) {
       <Text>{value}</Text>
     </Wrap>
   )
-}
-
-interface CheckboxProps {
-  onChange: JSX.GenericEventHandler<HTMLInputElement>
-  checked: boolean
-}
-
-interface LabeledCheckboxProp extends CheckboxProps {
-  value: string
 }
