@@ -27,7 +27,7 @@ import { LabeledCheckbox } from './components/Checkbox'
 import { Result, SubmitEvent, getElementValues } from './features/login'
 import Footer from './components/Footer'
 
-export default ({ optOutUrl }: OptOutUrl) => {
+export default function App({ optOutUrl }: OptOutUrl) {
   const {
     state: { result, isKeepLogin },
     dispatch,
