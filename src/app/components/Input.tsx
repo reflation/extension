@@ -14,7 +14,7 @@ const LoginOutside = styled.div<IsWrong & JSX.HTMLAttributes<HTMLDivElement>>`
   padding-bottom: 5px;
   background-color: ${darken_ultra};
   box-shadow: 0 0 0 2px ${props => (props.isWrong ? invaild.outside : '')};
-  border: solid 1px ${props => (props.isWrong ? invaild.inside : '')};
+  border: solid 1px ${props => (props.isWrong ? invaild.inside : 'transparent')};
 `
 
 const Icon = css`
