@@ -12,6 +12,7 @@ import {
 import useLoginReducer, {
   submitCreator,
   keepCreator,
+  IDLE,
 } from './features/loginReducer'
 
 import { UsernameInput, PasswordInput } from './components/Input'
@@ -50,6 +51,10 @@ export default ({ optOutUrl }: OptOutUrl) => {
     submitWhenKeepLogin()
   }, [isKeepLogin])
 
+  const onChange = () => {
+    if (isWrong) dispatch(IDLE)
+  }
+
   return (
     <Fragment>
       <Main>
@@ -57,8 +62,8 @@ export default ({ optOutUrl }: OptOutUrl) => {
           <Title>로그인</Title>
           <Form onSubmit={handleSubmit}>
             {result === Result.blocked && <WarningLabel />}
-            <UsernameInput isWrong={isWrong} />
-            <PasswordInput isWrong={isWrong} />
+            <UsernameInput isWrong={isWrong} onChange={onChange} />
+            <PasswordInput isWrong={isWrong} onChange={onChange} />
             <LabeledCheckbox
               value="로그인 유지"
               checked={isKeepLogin}
