@@ -79,15 +79,21 @@ const Checkbox = (props: CheckboxProps) => (
   </Label>
 )
 
-export const LabeledCheckbox = (props: CheckboxProps) => (
-  <Wrap>
-    <Checkbox {...props} />
-    <Text>{props.value}</Text>
-  </Wrap>
-)
+export function LabeledCheckbox(props: LabeledCheckboxProp) {
+  const { value, ...fowardedProps } = props
+  return (
+    <Wrap>
+      <Checkbox {...fowardedProps} />
+      <Text>{value}</Text>
+    </Wrap>
+  )
+}
 
 interface CheckboxProps {
-  value: string
-  onChange: (e: JSX.TargetedEvent<HTMLInputElement, Event>) => void
+  onChange: JSX.GenericEventHandler<HTMLInputElement>
   checked: boolean
+}
+
+interface LabeledCheckboxProp extends CheckboxProps {
+  value: string
 }
