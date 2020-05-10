@@ -72,21 +72,21 @@ const Input = styled.input`
   }
 `
 
-const Checkbox = (props: Props) => (
+const Checkbox = (props: CheckboxProps) => (
   <Label>
     <Input {...props} type="checkbox" />
     <Checkmark />
   </Label>
 )
 
-export const LabeledCheckbox = (props: Props) => (
+export const LabeledCheckbox = (props: CheckboxProps) => (
   <Wrap>
     <Checkbox {...props} />
     <Text>{props.value}</Text>
   </Wrap>
 )
 
-type Props = {
+interface CheckboxProps {
   value: string
   onChange: (e: JSX.TargetedEvent<HTMLInputElement, Event>) => void
   checked: boolean
