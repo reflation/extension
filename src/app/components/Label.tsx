@@ -11,8 +11,9 @@ interface WarningLabelProp {
 const Label = styled.label<WarningLabelProp>`
   ${Regular}
   padding-bottom: 1rem;
-  transition: color 0.5s;
-  color: ${props => (props.isBlocked ? red : 'transparent')};
+  transition: opacity 0.5s;
+  opacity: ${props => (props.isBlocked ? 1 : 0)};
+  color: ${red};
 `
 
 export const WarningLabel = ({ isBlocked }: WarningLabelProp) => (
