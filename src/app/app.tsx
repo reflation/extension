@@ -94,4 +94,6 @@ const Card = styled(Box)`
   justify-content: center;
 `
 
-type OptOutUrl = { optOutUrl: string }
+interface OptOutUrl {
+  optOutUrl: string
+}
