@@ -17,7 +17,7 @@ import useLoginReducer, {
 
 import { UsernameInput, PasswordInput } from './components/Input'
 import { WarningLabel } from './components/Label'
-import Submit from './components/Submit'
+import { Submit } from './components/Submit'
 
 import { Box } from '../styles/components/Box'
 import { Title } from '../styles/components/Title'

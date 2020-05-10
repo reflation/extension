@@ -22,7 +22,7 @@ const Text = styled.span`
   text-align: center;
 `
 
-export default () => (
+export const Submit = () => (
   <SubmitButton type="submit">
     <Text>LOGIN</Text>
   </SubmitButton>
