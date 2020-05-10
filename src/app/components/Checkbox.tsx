@@ -79,7 +79,7 @@ const Checkbox = (props: CheckboxProps) => (
   </Label>
 )
 
-export function LabeledCheckbox(props: LabeledCheckboxProp) {
+export default function LabeledCheckbox(props: LabeledCheckboxProp) {
   const { value, ...fowardedProps } = props
   return (
     <Wrap>
