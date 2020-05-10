@@ -18,6 +18,8 @@ const resultCreator = (result: Result): Actions => ({
   payload: result,
 })
 
+export const IDLE = resultCreator(Result.idle)
+
 export const keepCreator = (isKeep: boolean): Actions => ({
   type: 'KEEP',
   payload: isKeep,
