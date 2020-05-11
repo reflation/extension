@@ -15,14 +15,14 @@ import useLoginReducer, {
   IDLE,
 } from './features/loginReducer'
 
+import LabeledCheckbox from './components/Checkbox'
 import { UsernameInput, PasswordInput } from './components/Input'
-import { WarningLabel } from './components/Label'
+import { WarningLabel, FindPassword } from './components/Label'
 import { Submit } from './components/Submit'
 
 import { Box } from '../styles/components/Box'
 import { Title } from '../styles/components/Title'
 import { Form } from '../styles/components/Input'
-import { LabeledCheckbox } from './components/Checkbox'
 
 import { Result, SubmitEvent, getElementValues } from './features/login'
 import Footer from './components/Footer'
@@ -70,6 +70,7 @@ export default function App({ optOutUrl }: OptOutUrl) {
               onChange={() => dispatch(keepCreator(!isKeepLogin))}
             />
             <Submit />
+            <FindPassword />
           </Form>
         </Card>
       </Main>
@@ -94,4 +95,6 @@ const Card = styled(Box)`
   justify-content: center;
 `
 
-type OptOutUrl = { optOutUrl: string }
+interface OptOutUrl {
+  optOutUrl: string
+}

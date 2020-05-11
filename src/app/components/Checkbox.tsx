@@ -72,22 +72,27 @@ const Input = styled.input`
   }
 `
 
-const Checkbox = (props: Props) => (
+interface CheckboxProps {
+  onChange: JSX.GenericEventHandler<HTMLInputElement>
+  checked: boolean
+}
+
+interface LabeledCheckboxProps extends CheckboxProps {
+  value: string
+}
+
+const Checkbox = (props: CheckboxProps) => (
   <Label>
     <Input {...props} type="checkbox" />
     <Checkmark />
   </Label>
 )
-
-export const LabeledCheckbox = (props: Props) => (
-  <Wrap>
-    <Checkbox {...props} />
-    <Text>{props.value}</Text>
-  </Wrap>
-)
-
-type Props = {
-  value: string
-  onChange: (e: JSX.TargetedEvent<HTMLInputElement, Event>) => void
-  checked: boolean
+export default function LabeledCheckbox(props: LabeledCheckboxProps) {
+  const { value, ...fowardedProps } = props
+  return (
+    <Wrap>
+      <Checkbox {...fowardedProps} />
+      <Text>{value}</Text>
+    </Wrap>
+  )
 }
