@@ -5,9 +5,8 @@ import { Input as OriginalInput } from '../../styles/components/Input'
 import {
   darken_ultra,
   darken_medium,
-  invaild,
+  invalid,
   white,
-  innerShadow,
   innerShadow,
 } from '../../styles/colors'
 import { css, cx } from 'linaria'
@@ -21,15 +20,15 @@ const LoginOutside = styled.div<IsWrong & JSX.HTMLAttributes<HTMLDivElement>>`
   padding-bottom: 5px;
   background-color: ${darken_ultra};
   box-shadow: inset 2px 2px 12px 0
-      ${props => (props.isWrong ? invaild.outside : white)},
+      ${props => (props.isWrong ? invalid.outside : white)},
     inset -5px -5px 8px 0
-      ${props => (props.isWrong ? invaild.inside : innerShadow)};
+      ${props => (props.isWrong ? invalid.inside : innerShadow)};
   transition: box-shadow 0.2s ease-in-out;
   &:focus-within {
     box-shadow: inset 2px 2px 12px 0
-        ${props => (props.isWrong ? invaild.outside : white)},
+        ${props => (props.isWrong ? invalid.outside : white)},
       inset -8px -8px 15px 0
-        ${props => (props.isWrong ? invaild.inside : innerShadow)};
+        ${props => (props.isWrong ? invalid.inside : innerShadow)};
   }
 `
 
