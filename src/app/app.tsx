@@ -18,7 +18,7 @@ import useLoginReducer, {
 import LabeledCheckbox from './components/Checkbox'
 import { UsernameInput, PasswordInput } from './components/Input'
 import { WarningLabel, FindPassword } from './components/Label'
-import Submit from './components/Submit'
+import { Submit } from './components/Submit'
 
 import { Box } from '../styles/components/Box'
 import { Title } from '../styles/components/Title'
@@ -27,7 +27,7 @@ import { Form } from '../styles/components/Input'
 import { Result, SubmitEvent, getElementValues } from './features/login'
 import Footer from './components/Footer'
 
-export default ({ optOutUrl }: OptOutUrl) => {
+export default function App({ optOutUrl }: OptOutUrl) {
   const {
     state: { result, isKeepLogin },
     dispatch,
