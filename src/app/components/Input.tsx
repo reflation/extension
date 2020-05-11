@@ -7,6 +7,8 @@ import {
   darken_medium,
   invaild,
   white,
+  innerShadow,
+  innerShadow,
 } from '../../styles/colors'
 import { css, cx } from 'linaria'
 import { styled } from 'linaria/react'
@@ -18,10 +20,17 @@ const LoginOutside = styled.div<IsWrong & JSX.HTMLAttributes<HTMLDivElement>>`
   padding-top: 5px;
   padding-bottom: 5px;
   background-color: ${darken_ultra};
-  box-shadow: inset 2px 2px 12px
-      ${props => (props.isWrong ? invaild.inside : '#dadeeb')},
-    inset -5px -5px 8px ${props => (props.isWrong ? invaild.outside : white)};
+  box-shadow: inset 2px 2px 12px 0
+      ${props => (props.isWrong ? invaild.outside : white)},
+    inset -5px -5px 8px 0
+      ${props => (props.isWrong ? invaild.inside : innerShadow)};
   transition: box-shadow 0.2s ease-in-out;
+  &:focus-within {
+    box-shadow: inset 2px 2px 12px 0
+        ${props => (props.isWrong ? invaild.outside : white)},
+      inset -8px -8px 15px 0
+        ${props => (props.isWrong ? invaild.inside : innerShadow)};
+  }
 `
 
 const Icon = css`

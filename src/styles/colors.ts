@@ -10,6 +10,7 @@ export const transparent = 'rgba(0, 0, 0, 0)'
 export const background = '#f7f7f7'
 
 export const mainBoxShadow = 'rgba(21, 19, 19, 0.07)'
+export const innerShadow = '#dadeeb'
 
 export const valid = {
   outside: 'rgba(186, 231, 255, 0.65)',
