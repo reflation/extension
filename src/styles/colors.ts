@@ -18,8 +18,8 @@ export const valid = {
 }
 
 export const invalid = {
-  outside: 'rgba(244, 179, 187, 0.65)',
-  inside: 'rgba(229, 27, 52, 0.65)',
+  outside: 'rgba(229, 27, 52, 0.65)',
+  inside: 'rgba(244, 179, 187, 0.65)',
 }
 
 export const green = 'rgba(82, 196, 26, 0.85)'
