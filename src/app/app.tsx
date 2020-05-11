@@ -17,7 +17,7 @@ import useLoginReducer, {
 
 import LabeledCheckbox from './components/Checkbox'
 import { UsernameInput, PasswordInput } from './components/Input'
-import { WarningLabel } from './components/Label'
+import { WarningLabel, FindPassword } from './components/Label'
 import Submit from './components/Submit'
 
 import { Box } from '../styles/components/Box'
@@ -70,6 +70,7 @@ export default ({ optOutUrl }: OptOutUrl) => {
               onChange={() => dispatch(keepCreator(!isKeepLogin))}
             />
             <Submit />
+            <FindPassword />
           </Form>
         </Card>
       </Main>

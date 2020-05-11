@@ -15,5 +15,5 @@ export const Box = styled.div`
   width: 430px;
   border-radius: 15px;
   align-self: center;
-  padding: 61px 32px 91px 32px;
+  padding: 61px 32px 75px 32px;
 `
