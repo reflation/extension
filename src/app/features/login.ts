@@ -16,11 +16,10 @@ export const formSubmit: FormSubmit = async (input: FormData) => {
     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
   )
 
-  if (data.includes('dbError')) {
-    const invaildMessage = data
-      .match(/var dbError = "(?:\.|(\\\")|[^\""\n])*"/)[0]
-      .slice(15, -1) as ErrorMessage
+  const dbError = data.match(/var dbError = "(?:\.|(\\\")|[^\""\n])*"/)
 
+  if (dbError !== null) {
+    const invaildMessage = dbError[0].slice(15, -1) as ErrorMessage
     return invaildMessage === Exceed ? Result.blocked : Result.invalid
   }
   return Result.correct
