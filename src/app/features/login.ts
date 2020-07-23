@@ -22,6 +22,7 @@ export const formSubmit: FormSubmit = async (input: FormData) => {
     const invaildMessage = dbError[0].slice(15, -1) as ErrorMessage
     return invaildMessage === Exceed ? Result.blocked : Result.invalid
   }
+  if (data.includes('하영Dreamy 비밀번호 변경')) return Result.changePassword
   return Result.correct
 }
 
