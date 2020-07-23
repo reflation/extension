@@ -30,6 +30,7 @@ export enum Result {
   'correct',
   'invalid',
   'blocked',
+  'changePassword',
 }
 
 export interface TargetElements extends EventTarget {

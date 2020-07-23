@@ -38,12 +38,21 @@ export default function App({ optOutUrl }: OptOutUrl) {
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault()
     dispatch(submitCreator(e.target))
+    if (result === Result.invalid || result === Result.blocked) return
+
+    if (isKeepLogin) saveAccountInfo(getElementValues(e.target))
+
     if (result === Result.correct) {
-      if (isKeepLogin) {
-        saveAccountInfo(getElementValues(e.target))
-      }
       location.href = 'main.do'
+      return
     }
+
+    if (result === Result.changePassword) {
+      location.href = 'sysUserPwd.do?changepw=y'
+      return
+    }
+
+    throw Error('Unexpect state flow in handleSubmit')
   }
 
   useEffect(() => {
