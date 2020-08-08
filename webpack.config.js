@@ -21,6 +21,7 @@ module.exports = (env, args) => {
     entry: {
       'scripts/main': './src/bootstrap.tsx',
       'scripts/logout': './src/logout.ts',
+      'scripts/options': './src/options.ts',
     },
     output: {
       path: path.resolve('./dist'),

@@ -27,6 +27,8 @@ import { Form } from '../styles/components/Input'
 import { Result, SubmitEvent, getElementValues } from './features/login'
 import Footer from './components/Footer'
 
+import { isChangePasswordIgnore } from '../options'
+
 export default function App({ optOutUrl }: OptOutUrl) {
   const {
     state: { result, isKeepLogin },
@@ -62,7 +64,12 @@ export default function App({ optOutUrl }: OptOutUrl) {
     }
 
     if (result === Result.changePassword) {
-      location.href = 'sysUserPwd.do?changepw=y'
+      isChangePasswordIgnore().then(isIgnore => {
+        // eslint-disable-next-line no-unused-expressions
+        isIgnore
+          ? (location.href = 'main.do')
+          : (location.href = 'sysUserPwd.do?changepw=y')
+      })
       return
     }
 

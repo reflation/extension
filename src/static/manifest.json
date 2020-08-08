@@ -9,7 +9,12 @@
     "48": "icon@3x.png",
     "128": "icon@8x.png"
   },
-  "permissions": ["*://dreamy.jejunu.ac.kr/*", "webRequest", "cookies"],
+  "permissions": [
+    "*://dreamy.jejunu.ac.kr/*",
+    "webRequest",
+    "cookies",
+    "storage"
+  ],
   "content_scripts": [
     {
       "run_at": "document_start",
@@ -22,5 +27,8 @@
       "matches": ["https://dreamy.jejunu.ac.kr/frame/main.do"],
       "js": ["scripts/logout.js"]
     }
-  ]
+  ],
+  "options_ui": {
+    "page": "options.html"
+  }
 }
