@@ -38,9 +38,23 @@ export default function App({ optOutUrl }: OptOutUrl) {
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault()
     dispatch(submitCreator(e.target))
-    if (result === Result.invalid || result === Result.blocked) return
-
     if (isKeepLogin) saveAccountInfo(getElementValues(e.target))
+  }
+
+  useEffect(() => {
+    setKeepLogin(isKeepLogin)
+    submitWhenKeepLogin()
+  }, [isKeepLogin])
+
+  useEffect(() => {
+    if (
+      result === Result.idle ||
+      result === Result.invalid ||
+      result === Result.blocked
+    ) {
+      // prettier-ignore
+      return
+    }
 
     if (result === Result.correct) {
       location.href = 'main.do'
@@ -52,13 +66,10 @@ export default function App({ optOutUrl }: OptOutUrl) {
       return
     }
 
-    throw Error('Unexpect state flow in handleSubmit')
-  }
-
-  useEffect(() => {
-    setKeepLogin(isKeepLogin)
-    submitWhenKeepLogin()
-  }, [isKeepLogin])
+    throw Error(
+      `Unexpect result flow in handleSubmit' current value: ${Result[result]}`
+    )
+  }, [result])
 
   const onChange = () => {
     if (isWrong) dispatch(IDLE)
