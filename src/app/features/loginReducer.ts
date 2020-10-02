@@ -57,9 +57,9 @@ const initialState: State = {
 
 const reducer = (state: State, action: Actions) => {
   switch (action.type) {
-    case 'RESULT':
+    case RESULT:
       return { ...state, result: action.payload }
-    case 'KEEP':
+    case KEEP:
       return { ...state, isKeepLogin: action.payload }
     default:
       throw new Error('Unexpected action')
