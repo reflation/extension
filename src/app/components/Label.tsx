@@ -1,9 +1,8 @@
 import { h } from 'preact'
 
-import { red } from '../../styles/colors'
+import { red, primary } from '../../styles/colors'
 import { Regular } from '../../styles/components/Text'
 import { styled } from 'linaria/react'
-import { Link } from './Link'
 
 interface WarningLabelProp {
   isBlocked: boolean
@@ -25,6 +24,15 @@ const CenterLabel = styled(Label)`
   margin-top: 16px;
 `
 
+const TextButton = styled.button`
+  color: ${primary};
+  font-weight: bold;
+  padding: 0;
+  background-color: transparent;
+  font-size: 1em;
+  cursor: pointer;
+`
+
 export const WarningLabel = ({ isBlocked }: WarningLabelProp) => (
   <RedLabel isBlocked={isBlocked}>너무 많이 로그인을 시도하였습니다</RedLabel>
 )
@@ -35,6 +43,6 @@ const openFindPassword = () => {
 
 export const FindPassword = () => (
   <CenterLabel>
-    또는 <Link onClick={openFindPassword}>비밀번호 찾기</Link>
+    또는 <TextButton onClick={openFindPassword}>비밀번호 찾기</TextButton>
   </CenterLabel>
 )
