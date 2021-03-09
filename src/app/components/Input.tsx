@@ -2,7 +2,13 @@ import { h, JSX } from 'preact'
 import { User, Lock, Eye, EyeOff } from 'preact-feather'
 
 import { Input as OriginalInput } from '../../styles/components/Input'
-import { darken_ultra, darken_medium, invaild } from '../../styles/colors'
+import {
+  darken_ultra,
+  darken_medium,
+  invalid,
+  white,
+  innerShadow,
+} from '../../styles/colors'
 import { css, cx } from 'linaria'
 import { styled } from 'linaria/react'
 import { useState } from 'preact/hooks'
@@ -13,10 +19,17 @@ const LoginOutside = styled.div<IsWrong & JSX.HTMLAttributes<HTMLDivElement>>`
   padding-top: 5px;
   padding-bottom: 5px;
   background-color: ${darken_ultra};
-  box-shadow: 0 0 0 2px ${props => (props.isWrong ? invaild.outside : '')};
-  border: solid 1px ${props => (props.isWrong ? invaild.inside : 'transparent')};
-  transition: ${props => (props.isWrong ? 'border 0.5s' : '')};
-  transition: ${props => (props.isWrong ? 'box-shadow 0.5s' : '')};
+  box-shadow: inset 2px 2px 12px 0
+      ${props => (props.isWrong ? invalid.outside : white)},
+    inset -5px -5px 8px 0
+      ${props => (props.isWrong ? invalid.inside : innerShadow)};
+  transition: box-shadow 0.2s ease-in-out;
+  &:focus-within {
+    box-shadow: inset 2px 2px 12px 0
+        ${props => (props.isWrong ? invalid.outside : white)},
+      inset -8px -8px 15px 0
+        ${props => (props.isWrong ? invalid.inside : innerShadow)};
+  }
 `
 
 const Icon = css`

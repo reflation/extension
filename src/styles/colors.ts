@@ -10,15 +10,16 @@ export const transparent = 'rgba(0, 0, 0, 0)'
 export const background = '#f7f7f7'
 
 export const mainBoxShadow = 'rgba(21, 19, 19, 0.07)'
+export const innerShadow = '#dadeeb'
 
 export const valid = {
   outside: 'rgba(186, 231, 255, 0.65)',
   inside: 'rgba(64, 169, 255, 0.65)',
 }
 
-export const invaild = {
-  outside: 'rgba(244, 179, 187, 0.65)',
-  inside: 'rgba(229, 27, 52, 0.65)',
+export const invalid = {
+  outside: 'rgba(229, 27, 52, 0.65)',
+  inside: 'rgba(244, 179, 187, 0.65)',
 }
 
 export const green = 'rgba(82, 196, 26, 0.85)'

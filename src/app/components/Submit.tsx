@@ -13,6 +13,11 @@ const SubmitButton = styled.button`
   cursor: pointer;
   width: 178px;
   align-self: center;
+  box-shadow: 0 10px 24px 0 ${primary};
+  transition: box-shadow 0.2s ease-in-out;
+  :hover {
+    box-shadow: 0 3px 10px 0 ${primary};
+  }
 `
 
 const Text = styled.span`
